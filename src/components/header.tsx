@@ -19,7 +19,7 @@ iconMap.set(icons.TWITTER, <FontAwesomeIcon icon={faTwitter} />)
 
 const StyledHeader = styled.header`
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
 
   h1:before {
@@ -41,9 +41,15 @@ const StyledHeader = styled.header`
     -webkit-transform: scaleX(1);
     transform: scaleX(1);
   }
+
+  > a {
+    display: flex;
+  }
 `
 
 const StyledNavigation = styled.nav`
+  display: flex;
+
   a:not(:last-child) {
     margin-right: 20px;
   }

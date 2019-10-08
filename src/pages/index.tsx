@@ -17,7 +17,7 @@ const StyledCanvas = styled.canvas`
 
 const StyledContent = styled.div`
   max-width: 550px;
-  margin-top: 15vh;
+  margin-top: 10vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

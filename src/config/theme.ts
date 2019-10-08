@@ -15,7 +15,7 @@ export const theme = {
   linkedInColor: '#0077B5',
 }
 
-export type ThemeType = typeof theme
+export type ThemeTypes = typeof theme
 
 export const GlobalStyle = createGlobalStyle`
 

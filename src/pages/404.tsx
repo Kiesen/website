@@ -11,7 +11,7 @@ import { ThemeType } from 'src/config/theme'
 
 const Styled404Content = styled.div`
   height: 100%;
-  margin-top: 15vh;
+  margin-top: 10vh;
   display: flex;
   text-align: center;
   flex-direction: column;

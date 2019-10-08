@@ -7,7 +7,7 @@ module.exports = {
 
   content: [
     "Hello, I'm Frederik, a <strong>web developer</strong> and <strong>data science enthusiast</strong> currently based in Duisburg.",
-    'I like <strong>creating,</strong> <strong>maintaining</strong> and <strong>hosting</strong> digital applications and getting in touch with new technologies',
+    'I like <strong>creating,</strong> <strong>maintaining</strong> and <strong>hosting</strong> digital applications and getting in touch with new technologies.',
   ],
 
   social: [

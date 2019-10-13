@@ -7,7 +7,7 @@ import Header from 'src/components/header'
 import Meta from 'src/components/meta'
 
 import { staticQuerySiteMetaData } from 'src/types/staticQueryTypes'
-import { ThemeType } from 'src/config/theme'
+import { ThemeTypes } from 'src/config/theme'
 
 const Styled404Content = styled.div`
   height: 100%;
@@ -16,7 +16,7 @@ const Styled404Content = styled.div`
   text-align: center;
   flex-direction: column;
   p {
-    font-size: ${({ theme }: { theme: ThemeType }) => theme.fontSizeParagraph};
+    font-size: ${({ theme }: { theme: ThemeTypes }) => theme.fontSizeParagraph};
   }
 `
 

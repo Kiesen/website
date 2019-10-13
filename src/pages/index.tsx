@@ -7,7 +7,7 @@ import Header from 'src/components/header'
 import Meta from 'src/components/meta'
 
 import { staticQuerySiteMetaData } from 'src/types/staticQueryTypes'
-import { ThemeType } from 'src/config/theme'
+import { ThemeTypes } from 'src/config/theme'
 
 const StyledCanvas = styled.canvas`
   position: fixed;
@@ -22,7 +22,7 @@ const StyledContent = styled.div`
   flex-direction: column;
   justify-content: center;
   p {
-    font-size: ${({ theme }: { theme: ThemeType }) => theme.fontSizeParagraph};
+    font-size: ${({ theme }: { theme: ThemeTypes }) => theme.fontSizeParagraph};
   }
 `
 
@@ -46,7 +46,7 @@ const Index: FC<{}> = () => {
   return (
     <>
       <Meta />
-      <StyledCanvas id="particle" />
+      <StyledCanvas id="particles" />
       <Layout>
         <Header />
         <StyledContent>

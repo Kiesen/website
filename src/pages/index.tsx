@@ -46,7 +46,7 @@ const Index: FC<{}> = () => {
   )
 
   useEffect(() => {
-    const animation = new Particles('particles', 250)
+    const animation = new Particles('particles', 100)
     animation.start()
   }, [])
 

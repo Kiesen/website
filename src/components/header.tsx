@@ -12,6 +12,8 @@ import * as icons from 'src/constants/icons'
 
 import { staticQuerySiteMetaData } from 'src/types/staticQueryTypes'
 
+import { ThemeTypes } from 'src/config/theme'
+
 const iconMap = new Map()
 iconMap.set(icons.GITHUB, <FontAwesomeIcon icon={faGithub} />)
 iconMap.set(icons.LINKEDIN, <FontAwesomeIcon icon={faLinkedinIn} />)
@@ -22,7 +24,13 @@ const StyledHeader = styled.header`
   align-items: center;
   justify-content: space-between;
 
-  h1:before {
+  div {
+    font-size: ${({ theme }: { theme: ThemeTypes }) => theme.fontSizeH1};
+    font-weight: ${({ theme }: { theme: ThemeTypes }) => theme.fontWeightBold};
+    margin: ${({ theme }: { theme: ThemeTypes }) => theme.marginH1} 0;
+  }
+
+  div:before {
     content: '';
     position: absolute;
     width: 100%;
@@ -36,7 +44,7 @@ const StyledHeader = styled.header`
     transition: all 0.3s ease-in-out 0s;
   }
 
-  h1:hover:before {
+  div:hover:before {
     visibility: visible;
     -webkit-transform: scaleX(1);
     transform: scaleX(1);
@@ -101,7 +109,7 @@ const Header: FC<{}> = () => {
   return (
     <StyledHeader>
       <Link to={BASE}>
-        <h1>Frederik Aulich</h1>
+        <div>Frederik Aulich</div>
       </Link>
       <StyledNavigation>
         {social.map((entry, i) => (

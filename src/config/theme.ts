@@ -1,7 +1,10 @@
 import { createGlobalStyle } from 'styled-components'
 
 export const theme = {
+  fontSizeH1: '2em',
   fontSizeParagraph: '1.5em',
+
+  marginH1: '0.67em',
 
   fontWeightLight: '300',
   fontWeightNormal: '400',

@@ -1,10 +1,12 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import styled from 'styled-components'
 import { graphql, useStaticQuery } from 'gatsby'
 
 import Layout from 'src/components/layout'
 import Header from 'src/components/header'
 import Meta from 'src/components/meta'
+
+import Particles from 'src/animations/particles'
 
 import { staticQuerySiteMetaData } from 'src/types/staticQueryTypes'
 import { ThemeTypes } from 'src/config/theme'
@@ -42,6 +44,11 @@ const Index: FC<{}> = () => {
       }
     `
   )
+
+  useEffect(() => {
+    const animation = new Particles('particles', 250)
+    animation.start()
+  }, [])
 
   return (
     <>

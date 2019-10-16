@@ -1,6 +1,8 @@
 module.exports = {
   title: 'frederikaulich',
   heading: 'Frederik Aulich',
+  author: 'Frederik Aulich',
+  description: 'Personal website of Frederik Aulich',
   siteUrl: 'https://frederikaulich.com/',
   notFound:
     '<h1>404</h1><br><p>The searched content does not exist or was deleted</p>',

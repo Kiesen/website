@@ -39,7 +39,7 @@ const NotFound: FC<{}> = () => {
 
   return (
     <>
-      <Meta />
+      <Meta title={'404'} />
       <Layout>
         <Header />
         <Styled404Content dangerouslySetInnerHTML={{ __html: notFound }} />

@@ -52,7 +52,7 @@ const Index: FC<{}> = () => {
 
   return (
     <>
-      <Meta />
+      <Meta title={'Home'} />
       <StyledCanvas id="particles" />
       <Layout>
         <Header />

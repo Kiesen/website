@@ -29,5 +29,7 @@ module.exports = {
   rules: {
     'react/prop-types': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/camelcase': 'off',
+    '@typescript-eslint/no-var-requires': 'off',
   },
 }

@@ -1,8 +1,7 @@
 # frederikaulich.com
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Kiesen/frederikaulich.com/LICENSE) [![dependencies](https://david-dm.org/Kiesen/frederikaulich.com.svg)](https://david-dm.org/Kiesen/frederikaulich.com.svg) [![devDependencies](https://david-dm.org/Kiesen/frederikaulich.com/dev-status.svg)](https://david-dm.org/Kiesen/frederikaulich.com/dev-status.svg)
-
-My personal website build with Gatsby and deployed with the help of Travis CI
+ 
 
 ## Built with
 

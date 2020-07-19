@@ -13,7 +13,7 @@ const Header: FC<{}> = () => (
     paddingX="1.2rem"
   >
     <Heading as="h1" size="xl" fontWeight="800" paddingY="1.2rem">
-      Frederik Aulich
+      <NextLink href="/">Frederik Aulich</NextLink>
     </Heading>
     <Flex w="110px" justifyContent="space-between">
       <Link href={'https://github.com/kiesen'} isExternal>

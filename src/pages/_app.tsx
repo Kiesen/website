@@ -2,11 +2,11 @@ import { AppProps } from 'next/app';
 import { FC } from 'react';
 import { CSSReset, ThemeProvider } from '@chakra-ui/core';
 
-import theme from '@src/styles/theme';
+import chakraTheme from '@src/styles/chakraTheme';
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={chakraTheme}>
       <CSSReset />
       <Component {...pageProps} />
     </ThemeProvider>

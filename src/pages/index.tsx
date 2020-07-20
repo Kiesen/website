@@ -1,10 +1,15 @@
 import Head from 'next/head';
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { Box } from '@chakra-ui/core';
 
 import Header from '@src/components/header';
+import Particle from '@src/animations/particle';
 
 const Home: FC<{}> = () => {
+  useEffect(() => {
+    const animation = new Particle('particles', 100);
+    animation.start();
+  }, []);
   return (
     <>
       <Head>
@@ -12,6 +17,7 @@ const Home: FC<{}> = () => {
       </Head>
       <Box w="100%" color="black">
         <Header />
+        <canvas id="particles" />
       </Box>
     </>
   );

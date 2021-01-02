@@ -7,11 +7,11 @@
     "npm": ">=6.4.9"
   },
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3001",
     "lint": "eslint --ext .ts --ext .tsx --ext .js --max-warnings=0 src",
-    "pretty-quick": "pretty-quick",
+    "pretty-quick": "pretty-quick --staged",
     "postinstall": "husky install"
   },
   "dependencies": {

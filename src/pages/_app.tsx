@@ -1,16 +1,11 @@
 import { AppProps } from 'next/app';
 import { FC } from 'react';
-import { CSSReset, ThemeProvider } from '@chakra-ui/core';
+import 'tailwindcss/tailwind.css';
 
-import chakraTheme from '@src/styles/chakraTheme';
+import '@src/styles/globals.css';
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
-  return (
-    <ThemeProvider theme={chakraTheme}>
-      <CSSReset />
-      <Component {...pageProps} />
-    </ThemeProvider>
-  );
+  return <Component {...pageProps} />;
 };
 
 export default App;

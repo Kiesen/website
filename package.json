@@ -1,6 +1,6 @@
 {
   "name": "frederikaulich",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": false,
   "engines": {
     "node": ">=14.x.x",

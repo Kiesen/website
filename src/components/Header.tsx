@@ -1,22 +1,13 @@
-import NextLink from 'next/link';
 import { FC } from 'react';
 import { FaGithub, FaTwitter, FaLinkedinIn } from 'react-icons/fa';
 
-type HeaderProps = {
-  position?: 'static' | 'fixed' | 'absolute' | 'relative' | 'sticky';
-};
+const iconSize = '35px';
 
-const iconSize = '25px';
-
-const Header: FC<HeaderProps> = ({ position }) => (
-  <header
-    className={`w-full flex items-center justify-between ${position}`}
-  >
-    <h1 className="text-2xl font-extrabold py-2">
-      <NextLink href="/">Frederik Aulich</NextLink>
-    </h1>
+const Header: FC<{}> = () => (
+  <header className="w-full py-4 flex justify-center">
     <div className="grid grid-cols-3 gap-4">
       <a
+        className="animate-glitch"
         href={'https://github.com/kiesen'}
         rel="noreferrer"
         target="_blank"
@@ -24,6 +15,7 @@ const Header: FC<HeaderProps> = ({ position }) => (
         <FaGithub size={iconSize} />
       </a>
       <a
+        className="animate-glitch"
         href={
           'https://www.linkedin.com/in/frederik-aulich-08736a171/'
         }
@@ -33,6 +25,7 @@ const Header: FC<HeaderProps> = ({ position }) => (
         <FaLinkedinIn size={iconSize} />
       </a>
       <a
+        className="animate-glitch"
         href={'https://twitter.com/frederikaulich'}
         rel="noreferrer"
         target="_blank"

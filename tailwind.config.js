@@ -11,10 +11,6 @@ module.exports = {
         glitch: '5s ease 5s infinite alternate glitch',
       },
       keyframes: {
-        fadeIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
-        },
         glitch: {
           '0%': {
             transform: 'rotateX(30deg) skewX(30deg)',
@@ -22,6 +18,10 @@ module.exports = {
           '2%': {
             transform: 'rotateX(0deg) skewX(0deg)',
           },
+        },
+        fadeIn: {
+          from: { opacity: '0' },
+          to: { opacity: '1' },
         },
       },
       backgroundImage: () => ({
@@ -31,7 +31,8 @@ module.exports = {
   },
   variants: {
     extend: {
-      display: ['group-hover', 'hover', 'focus'],
+      animation: ['group-hover'],
+      scale: ['group-hover'],
     },
   },
   plugins: [],

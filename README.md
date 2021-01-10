@@ -1,6 +1,6 @@
 # frederikaulich.com
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)]
+![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
 
 This is the source code of my website. I change the codebase occasionally to try out new things. Feel free to fork, manipulate and host the website with your content.
 

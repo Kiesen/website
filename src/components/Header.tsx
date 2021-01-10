@@ -1,10 +1,14 @@
 import { FC } from 'react';
+import Link from 'next/link';
 import { FaGithub, FaTwitter, FaLinkedinIn } from 'react-icons/fa';
 
 const iconSize = '35px';
 
 const Header: FC<{}> = () => (
-  <header className="w-full py-4 flex justify-center">
+  <header className="w-full p-4 flex justify-between">
+    <div className="text-3xl font-semibold animate-glitch">
+      <Link href="/">fa</Link>
+    </div>
     <div className="grid grid-cols-3 gap-4">
       <a
         className="animate-glitch"

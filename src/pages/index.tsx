@@ -23,7 +23,7 @@ const Home: FC<{}> = () => {
             />
             <div className="max-w-xl py-4">
               <h2 className="text-2xl py-4 text-center font-semibold animate-glitch">
-                Primary tech stack
+                My current tech-stack
               </h2>
               <div className="flex flex-wrap justify-center">
                 {meta.skills.map((skill) => (
@@ -32,11 +32,14 @@ const Home: FC<{}> = () => {
                     href={skill.link}
                     rel="noreferrer"
                     target="_blank"
-                    className="h-24 w-1/4 p-4 m-2 rounded-md bg-gray-50 bg-opacity-10 flex items-center justify-center group"
+                    className="h-24 w-1/4 m-2 rounded-md bg-gray-50 bg-opacity-10 group flex flex flex-col items-center justify-center"
                   >
-                    <div className="transform group-hover:scale-125">
+                    <div className="transition duration-500 ease-in-out transform group-hover:scale-110">
                       {iconMap.get(skill.id)}
                     </div>
+                    <span className="py-2 font-mono">
+                      {skill.name}
+                    </span>
                   </a>
                 ))}
               </div>

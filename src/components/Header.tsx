@@ -5,36 +5,42 @@ import { FaGithub, FaTwitter, FaLinkedinIn } from 'react-icons/fa';
 const iconSize = '35px';
 
 const Header: FC<{}> = () => (
-  <header className="w-full p-4 flex justify-between">
-    <div className="text-3xl font-semibold animate-glitch">
+  <header className="w-full p-4 flex justify-between animate-glitch ">
+    <div className="text-3xl font-semibold transition duration-500 ease-in-out transform hover:scale-110">
       <Link href="/">fa</Link>
     </div>
     <div className="grid grid-cols-3 gap-4">
       <a
-        className="animate-glitch"
         href={'https://github.com/kiesen'}
         rel="noreferrer"
         target="_blank"
       >
-        <FaGithub size={iconSize} />
+        <FaGithub
+          className="transition duration-500 ease-in-out transform hover:scale-110"
+          size={iconSize}
+        />
       </a>
       <a
-        className="animate-glitch"
         href={
           'https://www.linkedin.com/in/frederik-aulich-08736a171/'
         }
         rel="noreferrer"
         target="_blank"
       >
-        <FaLinkedinIn size={iconSize} />
+        <FaLinkedinIn
+          className="transition duration-500 ease-in-out transform hover:scale-110"
+          size={iconSize}
+        />
       </a>
       <a
-        className="animate-glitch"
         href={'https://twitter.com/frederikaulich'}
         rel="noreferrer"
         target="_blank"
       >
-        <FaTwitter size={iconSize} />
+        <FaTwitter
+          className="transition duration-500 ease-in-out transform hover:scale-110"
+          size={iconSize}
+        />
       </a>
     </div>
   </header>

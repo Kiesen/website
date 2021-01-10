@@ -1,12 +1,15 @@
 # frederikaulich.com
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Kiesen/frederikaulich.com/LICENSE) [![dependencies](https://david-dm.org/Kiesen/frederikaulich.com.svg)](https://david-dm.org/Kiesen/frederikaulich.com.svg) [![devDependencies](https://david-dm.org/Kiesen/frederikaulich.com/dev-status.svg)](https://david-dm.org/Kiesen/frederikaulich.com/dev-status.svg)
- 
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)]
+
+This is the source code of my website. I change the codebase occasionally to try out new things. Feel free to fork, manipulate and host the website with your content.
 
 ## Built with
 
-- [gatsby](https://www.gatsbyjs.org) - Gatsby
-- [react](https://reactjs.org/) - React
+- [next.js](https://nextjs.org)
+- [react.js](https://reactjs.org)
+- [tailwindcss](https://tailwindcss.com)
+- [typescript](https://www.typescriptlang.org)
 
 ## Authors
 

@@ -1,54 +1,38 @@
 {
-  "name": "frederikaulich.com",
-  "description": "Personal website",
+  "name": "frederikaulich",
   "version": "1.0.0",
-  "license": "MIT",
+  "private": false,
+  "engines": {
+    "node": ">=14.x.x",
+    "npm": ">=6.4.9"
+  },
   "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "test": "jest"
+    "dev": "next dev -p 3001",
+    "build": "next build",
+    "start": "next start -p 3001",
+    "lint": "eslint --ext .ts --ext .tsx --ext .js --max-warnings=0 src",
+    "pretty-quick": "pretty-quick --staged",
+    "postinstall": "husky install"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.25",
-    "@fortawesome/free-brands-svg-icons": "^5.11.2",
-    "@fortawesome/react-fontawesome": "^0.1.4",
-    "gatsby": "^2.15.28",
-    "gatsby-plugin-manifest": "^2.2.23",
-    "gatsby-plugin-offline": "^3.0.11",
-    "gatsby-plugin-react-helmet": "^3.1.10",
-    "gatsby-plugin-root-import": "^2.0.5",
-    "gatsby-plugin-styled-components": "^3.1.8",
-    "gatsby-plugin-typescript": "^2.1.15",
-    "gatsby-source-filesystem": "^2.1.28",
-    "react": "^16.10.0",
-    "react-dom": "^16.10.0",
-    "react-helmet": "^5.2.1",
-    "styled-components": "^4.4.0"
+    "autoprefixer": "^10.1.0",
+    "next": "^10.0.4",
+    "postcss": "^8.2.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-icons": "^4.1.0",
+    "tailwindcss": "^2.0.2"
   },
   "devDependencies": {
-    "@types/react-helmet": "^5.0.11",
-    "@types/styled-components": "^4.1.19",
-    "@typescript-eslint/eslint-plugin": "^2.3.1",
-    "@typescript-eslint/parser": "^2.3.1",
-    "babel-jest": "^24.9.0",
-    "babel-plugin-styled-components": "^1.10.6",
-    "babel-preset-gatsby": "^0.2.17",
-    "eslint": "^6.4.0",
-    "eslint-config-prettier": "^6.3.0",
-    "eslint-plugin-prettier": "^3.1.1",
-    "eslint-plugin-react": "^7.14.3",
-    "identity-obj-proxy": "^3.0.0",
-    "jest": "^24.9.0",
-    "prettier": "^1.18.2",
-    "react-test-renderer": "^16.10.1",
-    "ts-jest": "^24.1.0",
-    "typescript": "^3.6.3"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/kiesen/kiesen.org"
+    "@types/node": "^14.14.16",
+    "@types/react": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.11.1",
+    "@typescript-eslint/parser": "^4.11.1",
+    "eslint": "^7.16.0",
+    "eslint-plugin-react": "^7.22.0",
+    "husky": "^5.0.6",
+    "prettier": "^2.2.1",
+    "pretty-quick": "^3.1.0",
+    "typescript": "^4.1.3"
   }
 }

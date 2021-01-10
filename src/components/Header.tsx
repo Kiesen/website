@@ -5,7 +5,7 @@ import { FaGithub, FaTwitter, FaLinkedinIn } from 'react-icons/fa';
 const iconSize = '35px';
 
 const Header: FC<{}> = () => (
-  <header className="w-full p-4 flex justify-between animate-glitch ">
+  <header className="w-full py-4 flex justify-between animate-glitch ">
     <div className="text-3xl font-semibold transition duration-500 ease-in-out transform hover:scale-110">
       <Link href="/">fa</Link>
     </div>

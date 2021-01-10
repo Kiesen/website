@@ -14,7 +14,7 @@ const Home: FC<{}> = () => {
         <title>Home | frederikaulich</title>
       </Head>
       <Background name="retro">
-        <div className="w-full min-h-screen text-white flex flex-col justify-between animate-fadeIn">
+        <div className="w-full min-h-screen px-4 text-white flex flex-col justify-between animate-fadeIn">
           <Header />
           <main className="h-full flex flex-col justify-evenly items-center">
             <h1

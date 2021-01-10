@@ -1,0 +1,50 @@
+{
+  "about": "Hello, I'm Freddy, a german based <strong>software engineer</strong> working at <strong>trivago.</strong>",
+  "skills": [
+    {
+      "id": "typescript",
+      "name": "TypeScript",
+      "link": "https://www.typescriptlang.org/"
+    },
+    {
+      "id": "reactjs",
+      "name": "React.JS",
+      "link": "https://reactjs.org/"
+    },
+    {
+      "id": "nodejs",
+      "name": "Node.JS",
+      "link": "https://nodejs.org"
+    },
+    {
+      "id": "python",
+      "name": "Python",
+      "link": "https://www.python.org/"
+    },
+    {
+      "id": "postgresql",
+      "name": "PostgreSQL",
+      "link": "https://www.postgresql.org/"
+    },
+    {
+      "id": "mongodb",
+      "name": "mongoDB",
+      "link": "https://www.mongodb.com/"
+    },
+    {
+      "id": "docker",
+      "name": "Docker",
+      "link": "https://www.docker.com/"
+    },
+    {
+      "id": "kubernetes",
+      "name": "Kubernetes",
+      "link": "https://kubernetes.io/"
+    },
+    {
+      "id": "git",
+      "name": "Git",
+      "link": "https://git-scm.com/"
+    }
+  ]
+}

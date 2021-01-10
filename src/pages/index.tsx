@@ -1,24 +1,50 @@
 import Head from 'next/head';
-import { FC, useEffect } from 'react';
-import { Box } from '@chakra-ui/core';
+import { FC } from 'react';
 
-import Header from '@src/components/header';
-import Particle from '@src/animations/particle';
+import Header from '@src/components/Header';
+import Background from '@src/components/Background';
+import Footer from '@src/components/Footer';
+import iconMap from '@src/utils/iconMap';
+import meta from '@src/static/meta.json';
 
 const Home: FC<{}> = () => {
-  useEffect(() => {
-    const animation = new Particle('particles', 100);
-    animation.start();
-  }, []);
   return (
     <>
       <Head>
         <title>Home | frederikaulich</title>
       </Head>
-      <Box w="100%" color="black">
-        <Header />
-        <canvas id="particles" />
-      </Box>
+      <Background name="retro">
+        <div className="w-full min-h-screen text-white flex flex-col justify-between animate-fadeIn">
+          <Header />
+          <main className="h-full flex flex-col justify-evenly items-center">
+            <h1
+              className="max-w-xl py-4 text-2xl text-center animate-glitch"
+              dangerouslySetInnerHTML={{ __html: meta.about }}
+            />
+            <div className="max-w-xl py-4">
+              <h2 className="text-2xl py-4 text-center font-semibold animate-glitch">
+                Primary tech stack
+              </h2>
+              <div className="flex flex-wrap justify-center">
+                {meta.skills.map((skill) => (
+                  <a
+                    key={skill.id}
+                    href={skill.link}
+                    rel="noreferrer"
+                    target="_blank"
+                    className="h-24 w-1/4 p-4 m-2 rounded-md bg-gray-50 bg-opacity-10 flex items-center justify-center group"
+                  >
+                    <div className="transform group-hover:scale-125">
+                      {iconMap.get(skill.id)}
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </main>
+          <Footer />
+        </div>
+      </Background>
     </>
   );
 };

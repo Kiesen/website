@@ -1,25 +1,18 @@
 import { FC, useEffect, useState } from 'react';
 
+import getTimeString from '@src/utils/getTimeString';
+
 const Footer: FC<{}> = () => {
-  const getClockString = (): string => {
-    const date = new Date();
-    const seconds = date.getSeconds();
-    const minutes = date.getMinutes();
-    const hours = date.getHours();
-
-    return `${hours}:${minutes}:${seconds}`;
-  };
-
-  const [time, setTime] = useState(getClockString());
+  const [time, setTime] = useState(getTimeString());
 
   useEffect(() => {
     setTimeout(() => {
-      setTime(getClockString());
+      setTime(getTimeString());
     }, 1000);
   }, [time]);
 
   return (
-    <footer className="w-full p-4 text-center animate-glitch">
+    <footer className="w-full p-4 text-center text-xl animate-glitch">
       {time}
     </footer>
   );

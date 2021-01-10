@@ -37,7 +37,7 @@ const Home: FC<{}> = () => {
                     <div className="transition duration-500 ease-in-out transform group-hover:scale-110">
                       {iconMap.get(skill.id)}
                     </div>
-                    <span className="py-2 font-mono">
+                    <span className="hidden md:block py-2 font-mono">
                       {skill.name}
                     </span>
                   </a>

@@ -1,0 +1,14 @@
+.husky
+.next
+.eslintignore
+.eslint
+.prettierignore
+.prettierrc
+.dockerignore
+.docker-comose.yml
+.git
+.gitignore
+LICENSE.md
+REAMDE.md
+Dockerfile
+node_modules

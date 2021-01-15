@@ -12,7 +12,7 @@
     "start": "next start -p 3001",
     "lint": "eslint --ext .ts --ext .tsx --ext .js --max-warnings=0 src",
     "pretty-quick": "pretty-quick --staged",
-    "postinstall": "husky install"
+    "postinstall": "if [ -z \"$BUILD\" ]; then husky install; fi"
   },
   "dependencies": {
     "autoprefixer": "^10.1.0",

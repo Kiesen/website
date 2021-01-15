@@ -18,11 +18,11 @@ const Home: FC<{}> = () => {
           <Header />
           <main className="h-full flex flex-col justify-evenly items-center">
             <h1
-              className="max-w-xl py-4 text-2xl text-center animate-glitch"
+              className="max-w-xl py-4 text-2xl text-center"
               dangerouslySetInnerHTML={{ __html: meta.about }}
             />
             <div className="max-w-xl py-4">
-              <h2 className="text-2xl py-4 text-center font-semibold animate-glitch">
+              <h2 className="text-2xl py-4 text-center font-semibold">
                 My current tech-stack
               </h2>
               <div className="flex flex-wrap justify-center">

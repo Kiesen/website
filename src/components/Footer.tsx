@@ -12,9 +12,7 @@ const Footer: FC<{}> = () => {
   }, [time]);
 
   return (
-    <footer className="w-full p-4 text-center text-xl animate-glitch">
-      {time}
-    </footer>
+    <footer className="w-full p-4 text-center text-xl">{time}</footer>
   );
 };
 

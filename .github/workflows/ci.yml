@@ -1,6 +1,10 @@
 name: CI
 
-on: push
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
 
 jobs:
   install:
@@ -45,6 +49,7 @@ jobs:
     name: Build and push image
     needs: test
     runs-on: [ubuntu-latest]
+    if: github.ref == 'refs/heads/master'
     steps:
       - name: Set up environment
         uses: actions/checkout@v2

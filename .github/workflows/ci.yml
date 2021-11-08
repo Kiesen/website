@@ -57,7 +57,7 @@ jobs:
         with:
           token: ${{ secrets.DO_ACCESS_TOKEN }}
 
-      - name: Login into registry
+      - name: Log into registry
         run: doctl registry login --expiry-seconds 600
 
       - name: Tag image for registry

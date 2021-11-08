@@ -7,10 +7,10 @@ jobs:
     name: Install dependencies
     runs-on: [ubuntu-latest]
     steps:
-      - name: Setup environment
+      - name: Set up environment
         uses: actions/checkout@v2
 
-      - name: Setup node.js
+      - name: Set up node.js
         uses: actions/setup-node@v2
         with:
           node-version: '16'
@@ -19,3 +19,51 @@ jobs:
 
       - name: Installation of dependencies
         run: npm ci
+
+  test:
+    name: Lint and test
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: Set up environment
+        uses: actions/checkout@v2
+
+      - name: Set up node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
+
+      - name: Lint
+        run: npm run lint
+
+  image:
+    name: Build and push image
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: Set up environment
+        uses: actions/checkout@v2
+
+      - name: Set up node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
+
+      - name: Build image
+        run: docker build -t frederikaulich
+
+      - name: Set up doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DO_ACCESS_TOKEN }}
+
+      - name: Login into registry
+        run: doctl registry login --expiry-seconds 600
+
+      - name: Tag image for registry
+        run: docker tag frederikaulich registry.digitalocean.com/kiesen/frederikaulich:latest
+
+      - name: Push image to registry
+        run: docker push registry.digitalocean.com/kiesen/frederikaulich:latest

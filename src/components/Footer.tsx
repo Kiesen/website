@@ -1,18 +1,8 @@
-import { FC, useEffect, useState } from 'react';
-
-import getTimeString from '@src/utils/getTimeString';
+import { FC } from 'react';
 
 const Footer: FC<{}> = () => {
-  const [time, setTime] = useState(getTimeString());
-
-  useEffect(() => {
-    setTimeout(() => {
-      setTime(getTimeString());
-    }, 1000);
-  }, [time]);
-
   return (
-    <footer className="w-full p-4 text-center text-xl">{time}</footer>
+    <footer className="w-full pt-16 pb-6 text-sm text-center fade-in"></footer>
   );
 };
 

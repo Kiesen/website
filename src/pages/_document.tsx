@@ -7,6 +7,8 @@ import Document, {
   DocumentInitialProps,
 } from 'next/document';
 
+import Body from '@src/components/Body';
+
 class ExtendedNextDocument extends Document {
   static async getInitialProps(
     ctx: DocumentContext
@@ -21,10 +23,10 @@ class ExtendedNextDocument extends Document {
         <Head>
           <link rel="shortcut icon" href="favicons/favicon.ico" />
         </Head>
-        <body>
+        <Body>
           <Main />
           <NextScript />
-        </body>
+        </Body>
       </Html>
     );
   }

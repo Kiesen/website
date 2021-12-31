@@ -1,11 +1,9 @@
 import Head from 'next/head';
 import { FC } from 'react';
 
-import Header from '@src/components/Header';
-import Background from '@src/components/Background';
+import NavBar from '@src/components/NavBar';
 import Footer from '@src/components/Footer';
-import iconMap from '@src/utils/iconMap';
-import meta from '@src/static/meta.json';
+import data from '@src/static/meta.json';
 
 const Home: FC<{}> = () => {
   return (
@@ -13,41 +11,26 @@ const Home: FC<{}> = () => {
       <Head>
         <title>Home | frederikaulich</title>
       </Head>
-      <Background name="retro">
-        <div className="w-full min-h-screen px-4 text-white flex flex-col justify-between animate-fadeIn">
-          <Header />
-          <main className="h-full flex flex-col justify-evenly items-center">
-            <h1
-              className="max-w-xl py-4 text-2xl text-center"
-              dangerouslySetInnerHTML={{ __html: meta.about }}
-            />
-            <div className="max-w-xl py-4">
-              <h2 className="text-2xl py-4 text-center font-semibold">
-                My current tech-stack
-              </h2>
-              <div className="flex flex-wrap justify-center">
-                {meta.skills.map((skill) => (
-                  <a
-                    key={skill.id}
-                    href={skill.link}
-                    rel="noreferrer"
-                    target="_blank"
-                    className="h-24 w-1/4 m-2 rounded-md bg-gray-50 bg-opacity-10 group flex flex flex-col items-center justify-center"
-                  >
-                    <div className="transition duration-500 ease-in-out transform group-hover:scale-110">
-                      {iconMap.get(skill.id)}
-                    </div>
-                    <span className="hidden md:block pt-2 font-mono">
-                      {skill.name}
-                    </span>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </main>
-          <Footer />
+
+      <NavBar />
+
+      <div className="container pt-24 md:pt-36 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+        <div className="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
+          <h1 className="my-4 text-3xl md:text-5xl font-bold leading-tight text-center md:text-left">
+            {data.headline}
+          </h1>
+
+          {/* 
+              Trust me, I'm engineer 
+          */}
+          <p
+            className="leading-normal text-base md:text-2xl mb-8 text-center md:text-left"
+            dangerouslySetInnerHTML={{ __html: data.subHeadline }}
+          />
         </div>
-      </Background>
+      </div>
+
+      <Footer />
     </>
   );
 };

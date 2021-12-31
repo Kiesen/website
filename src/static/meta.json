@@ -1,5 +1,6 @@
 {
-  "about": "Hello, I'm Freddy, a german based <strong>software engineer</strong> currently working at <strong>trivago.</strong>",
+  "headline": "Hello",
+  "subHeadline": "I am Freddy, a german based <strong>software engineer</strong> currently working at <strong>trivago.</strong>",
   "skills": [
     {
       "id": "typescript",

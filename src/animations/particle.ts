@@ -1,3 +1,9 @@
+/**
+ * Currently the particle animation is not in use, however it is
+ * still not considered as dead code. The creation taught me a lot
+ * about the html canvas element and how to create simple animation
+ * with it.
+ */
 class Particle {
   x: number;
   y: number;

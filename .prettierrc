@@ -5,5 +5,8 @@
   "tabWidth": 2,
   "trailingComma": "es5",
   "useTabs": false,
-  "printWidth": 70
+  "printWidth": 70,
+  "importOrder": ["^@src/(.*)$"],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
 }

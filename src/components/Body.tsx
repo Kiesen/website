@@ -1,11 +1,15 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 
-const Body: FC = ({ children }) => (
+type Props = {
+  children: ReactNode;
+};
+
+const Body: FC<Props> = ({ children }) => (
   <body
     style={{ backgroundImage: "url('/images/background.png')" }}
-    className={`leading-normal tracking-normal text-gray-100 m-6 bg-cover bg-fixed`}
+    className={`leading-normal tracking-normal text-gray-100 bg-cover bg-fixed h-full`}
   >
-    <div className="h-full">{children}</div>
+    {children}
   </body>
 );
 

@@ -1,18 +1,13 @@
 import { FC } from 'react';
-import { FaCuttlefish } from 'react-icons/fa';
 
-type Props = {
-  textContent: string;
-  showCurrentYear: boolean;
-};
+import staticMetaData from '@src/static/meta.json';
 
-const Footer: FC<Props> = ({ textContent, showCurrentYear }) => {
+const Footer: FC = () => {
   const currentYear = new Date().getUTCFullYear();
   return (
-    <footer className="w-full pt-16 pb-6 text-sm text-center fade-in">
-      <p className="text-gray-500 no-underline hover:no-underline">
-        &copy; {showCurrentYear ? `${currentYear + ' '}` : ''}
-        {textContent}
+    <footer className="w-full container mx-auto mt-12 text-sm text-center">
+      <p className="no-underline hover:no-underline">
+        &copy; {currentYear} &bull; {staticMetaData.author}
       </p>
     </footer>
   );

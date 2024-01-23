@@ -7,9 +7,9 @@
     "npm": ">=10.2.3"
   },
   "scripts": {
-    "dev": "next dev -p 3001",
+    "dev": "next dev -p 8080",
     "build": "next build",
-    "start": "next start -p 3001",
+    "start": "next start -p 8080",
     "lint": "next lint",
     "pretty-quick": "pretty-quick --staged",
     "postinstall": "if [ -z \"$BUILD\" ]; then husky install; fi"

@@ -16,8 +16,8 @@
     "^@hooks/(.*)$",
     "^@utils/(.*)$",
     "^@static/(.*)$",
-    "^@styles/*",
-    "tailwindcss/*"
+    "tailwindcss/*",
+    "^@styles/*"
   ],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,

@@ -2,8 +2,9 @@
 
 import useSWR from 'swr';
 
-import { CACHE_KEYS } from '@config/constants';
 import { PartialSongData } from '@api/spotify/song/types';
+
+import { CACHE_KEYS } from '@config/constants';
 
 const fetchCurrentSong = async () =>
   fetch('/api/spotify/song')

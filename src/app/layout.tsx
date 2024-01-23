@@ -6,8 +6,9 @@ import { Body } from '@components/Body';
 
 import { HTML_HEAD_KEYS } from '@config/constants';
 
+import 'tailwindcss/tailwind.css';
+
 import '@styles/globals.css';
-import '@styles/tailwind.css';
 
 export default function RootLayout({
   children,

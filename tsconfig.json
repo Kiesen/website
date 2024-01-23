@@ -22,7 +22,7 @@
       "@hooks/*": ["src/hooks/*"],
       "@utils/*": ["src/utils/*"],
       "@static/*": ["src/static/*"],
-      "@styles/*": ["src/styles/*", "tailwindcss/*"],
+      "@styles/*": ["src/styles/*"],
     },
     "incremental": true,
     "plugins": [

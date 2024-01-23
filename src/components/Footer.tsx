@@ -1,19 +1,12 @@
-import { FC, useEffect, useState } from 'react';
+import staticMetaData from '@static/meta.json';
 
-import getTimeString from '@src/utils/getTimeString';
-
-const Footer: FC<{}> = () => {
-  const [time, setTime] = useState(getTimeString());
-
-  useEffect(() => {
-    setTimeout(() => {
-      setTime(getTimeString());
-    }, 1000);
-  }, [time]);
-
+export function Footer() {
+  const currentYear = new Date().getUTCFullYear();
   return (
-    <footer className="w-full p-4 text-center text-xl">{time}</footer>
+    <footer className="w-full container mx-auto mt-12 text-sm text-center">
+      <p className="no-underline hover:no-underline">
+        &copy; {currentYear} &bull; {staticMetaData.author}
+      </p>
+    </footer>
   );
-};
-
-export default Footer;
+}

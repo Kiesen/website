@@ -1,50 +1,60 @@
 {
-  "about": "Hello, I'm Freddy, a german based <strong>software engineer</strong> currently working at <strong>trivago.</strong>",
-  "skills": [
-    {
-      "id": "typescript",
-      "name": "TypeScript",
-      "link": "https://www.typescriptlang.org/"
-    },
-    {
-      "id": "reactjs",
-      "name": "React.JS",
-      "link": "https://reactjs.org/"
-    },
-    {
-      "id": "nodejs",
-      "name": "Node.JS",
-      "link": "https://nodejs.org"
-    },
-    {
-      "id": "python",
-      "name": "Python",
-      "link": "https://www.python.org/"
-    },
-    {
-      "id": "postgresql",
-      "name": "PostgreSQL",
-      "link": "https://www.postgresql.org/"
-    },
-    {
-      "id": "mongodb",
-      "name": "mongoDB",
-      "link": "https://www.mongodb.com/"
-    },
-    {
-      "id": "docker",
-      "name": "Docker",
-      "link": "https://www.docker.com/"
-    },
-    {
-      "id": "kubernetes",
-      "name": "Kubernetes",
-      "link": "https://kubernetes.io/"
-    },
-    {
-      "id": "git",
-      "name": "Git",
-      "link": "https://git-scm.com/"
-    }
-  ]
+  "caption": "Welcome",
+  "headline": "I'm Freddy - A fullstack software engineer with more than six years of experience.",
+  "author": "Frederik Aulich",
+  "social": {
+    "github": "https://github.com/Kiesen",
+    "linkedin": "https://www.linkedin.com/in/frederik-aulich-08736a171/",
+    "twitter": "https://twitter.com/frederikaulich"
+  },
+  "tech": {
+    "headline": "My tech-stack",
+    "collection": [
+      {
+        "id": "typescript",
+        "name": "TypeScript",
+        "link": "https://www.typescriptlang.org/"
+      },
+      {
+        "id": "reactjs",
+        "name": "React.JS",
+        "link": "https://reactjs.org/"
+      },
+      {
+        "id": "nodejs",
+        "name": "Node.JS",
+        "link": "https://nodejs.org"
+      },
+      {
+        "id": "python",
+        "name": "Python",
+        "link": "https://www.python.org/"
+      },
+      {
+        "id": "elixir",
+        "name": "Elixir",
+        "link": "https://elixir-lang.org/"
+      },
+      {
+        "id": "postgresql",
+        "name": "PostgreSQL",
+        "link": "https://www.postgresql.org/"
+      },
+      {
+        "id": "docker",
+        "name": "Docker",
+        "link": "https://www.docker.com/"
+      },
+      {
+        "id": "kubernetes",
+        "name": "Kubernetes",
+        "link": "https://kubernetes.io/"
+      },
+      {
+        "id": "git",
+        "name": "Git",
+        "link": "https://git-scm.com/"
+      }
+    ]
+  }
 }

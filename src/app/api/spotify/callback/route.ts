@@ -2,7 +2,7 @@ import { cookies } from 'next/headers';
 import { type NextRequest } from 'next/server';
 
 import { SPOTIFY_AUTH_STATE_KEY } from '@config/constants';
-import spotifyAPIClient from '@utils/spotifyAPIClient';
+import { sci } from '@utils/spotifyAPIClient';
 import { redirect } from 'next/navigation';
 import logger from '@utils/logger';
 
@@ -23,7 +23,7 @@ export async function GET(request: NextRequest) {
       status: 401,
     });
   } else {
-    const isAuthorized = await spotifyAPIClient.authorizeClient(code);
+    const isAuthorized = await sci.authorizeClient(code);
     cookieStore.delete(SPOTIFY_AUTH_STATE_KEY);
 
     if (isAuthorized) {

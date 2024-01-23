@@ -1,4 +1,3 @@
-import axios, { AxiosResponse } from 'axios';
 import queryString from 'query-string';
 
 type AuthCode = string | string[] | undefined;
@@ -15,36 +14,35 @@ const spotifyAPIClient = () => {
   // Interval identifier
   let intervalID: undefined | NodeJS.Timeout = undefined;
 
-  // Token auth url and basic access authorization header value
+  // Token url and basic access authorization header value
   const TOKEN_URL = 'https://accounts.spotify.com/api/token';
   const BASIC_ACCESS_AUTHORIZATION = `Basic ${Buffer.from(
     `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`
   ).toString('base64')}`;
 
-  // Headers for requesting spotify authorization endpoints
+  // Headers for requesting the authorization endpoints
   const authorizationHeaders = {
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/x-www-form-urlencoded',
-      Authorization: BASIC_ACCESS_AUTHORIZATION,
-    },
+    Accept: 'application/json',
+    'Content-Type': 'application/x-www-form-urlencoded',
+    Authorization: BASIC_ACCESS_AUTHORIZATION,
   };
 
   const authorizeClient = async (
     code: AuthCode
   ): Promise<boolean> => {
     try {
-      const authorizationResponse = await axios.post<AuthResponse>(
-        TOKEN_URL,
-        queryString.stringify({
+      const authorizationResponse = await fetch(TOKEN_URL, {
+        method: 'POST',
+        headers: authorizationHeaders,
+        body: queryString.stringify({
           code: code,
           redirect_uri: process.env.SPOTIFY_REDIRECT_URL,
           grant_type: 'authorization_code',
         }),
-        authorizationHeaders
-      );
+      });
+      const data =
+        (await authorizationResponse.json()) as AuthResponse;
 
-      const { data } = authorizationResponse;
       // Set access and refresh in memory
       process.env.SPOTIFY_ACCESS_TOKEN = data.access_token;
       process.env.SPOTIFY_REFRESH_TOKEN = data.refresh_token;
@@ -63,17 +61,17 @@ const spotifyAPIClient = () => {
 
   const refreshAccessToken = async (): Promise<void> => {
     try {
-      const refreshAuthorizationResponse =
-        await axios.post<AuthResponse>(
-          TOKEN_URL,
-          queryString.stringify({
-            grant_type: 'refresh_token',
-            refresh_token: process.env.SPOTIFY_REFRESH_TOKEN,
-          }),
-          authorizationHeaders
-        );
+      const refreshAuthorizationResponse = await fetch(TOKEN_URL, {
+        method: 'POST',
+        headers: authorizationHeaders,
+        body: queryString.stringify({
+          grant_type: 'refresh_token',
+          refresh_token: process.env.SPOTIFY_REFRESH_TOKEN,
+        }),
+      });
 
-      const { data } = refreshAuthorizationResponse;
+      const data =
+        (await refreshAuthorizationResponse.json()) as AuthResponse;
 
       process.env.SPOTIFY_ACCESS_TOKEN = data.access_token;
     } catch (error) {
@@ -85,20 +83,18 @@ const spotifyAPIClient = () => {
     }
   };
 
-  const request = async <GenericResponseT>(endpoint: string) => {
-    const response = await axios.get<
-      any,
-      AxiosResponse<GenericResponseT>
-    >(endpoint, {
+  const request = async (endpoint: string) => {
+    return await fetch(endpoint, {
+      method: 'GET',
       headers: {
         Authorization: `Bearer ${process.env.SPOTIFY_ACCESS_TOKEN}`,
         'Content-Type': 'application/json',
       },
     });
-    return response;
   };
 
   return { authorizeClient, request };
 };
 
-export default spotifyAPIClient();
+export { spotifyAPIClient };
+export const sci = spotifyAPIClient();

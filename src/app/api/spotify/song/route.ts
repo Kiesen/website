@@ -1,7 +1,7 @@
 import queryString from 'query-string';
 
 import { SPOTIFY_API_BASE_URL } from '@config/endpoints';
-import spotifyAPIClient from '@utils/spotifyAPIClient';
+import { sci } from '@utils/spotifyAPIClient';
 import {
   CurrentlyPlayingResponse,
   RecentlyPlayedResponse,
@@ -12,23 +12,23 @@ const { stderr } = logger('[api/spotify/song]');
 
 export async function GET() {
   try {
-    const { data: currentlyPlayedData } =
-      await spotifyAPIClient.request<CurrentlyPlayingResponse>(
+    const current = (await (
+      await sci.request(
         `${SPOTIFY_API_BASE_URL}/me/player/currently-playing`
-      );
+      )
+    ).json()) as CurrentlyPlayingResponse | undefined;
 
-    const { data: recentlyPlayedData } =
-      await spotifyAPIClient.request<RecentlyPlayedResponse>(
+    const recently = (await (
+      await sci.request(
         `${SPOTIFY_API_BASE_URL}/me/player/recently-played?${queryString.stringify(
           { limit: 1 }
         )}`
-      );
-
-    stderr('Error while fetching song data');
+      )
+    ).json()) as RecentlyPlayedResponse | undefined;
 
     return Response.json({
-      current: currentlyPlayedData.item,
-      recently: recentlyPlayedData.items[0].item,
+      current,
+      recently,
     });
   } catch (error) {
     stderr('Error while fetching song data', error);

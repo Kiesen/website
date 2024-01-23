@@ -1,8 +1,6 @@
-import { FC } from 'react';
+import staticMetaData from '@static/meta.json';
 
-import staticMetaData from '@src/static/meta.json';
-
-const Footer: FC = () => {
+export function Footer() {
   const currentYear = new Date().getUTCFullYear();
   return (
     <footer className="w-full container mx-auto mt-12 text-sm text-center">
@@ -11,6 +9,4 @@ const Footer: FC = () => {
       </p>
     </footer>
   );
-};
-
-export default Footer;
+}

@@ -1,16 +1,16 @@
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
-type Props = {
+type BodyProps = {
   children: ReactNode;
 };
 
-const Body: FC<Props> = ({ children }) => (
-  <body
-    style={{ backgroundImage: "url('/images/background.png')" }}
-    className={`leading-normal tracking-normal text-gray-100 bg-cover bg-fixed h-full`}
-  >
-    {children}
-  </body>
-);
-
-export default Body;
+export function Body({ children }: BodyProps) {
+  return (
+    <body
+      style={{ backgroundImage: "url('/images/background.png')" }}
+      className={`leading-normal tracking-normal text-gray-100 bg-cover bg-fixed h-full`}
+    >
+      {children}
+    </body>
+  );
+}

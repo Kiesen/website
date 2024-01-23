@@ -8,7 +8,7 @@ RUN npm run build
 RUN rm -rf node_modules
 
 # Image for app execution
-FROM node:lts-alpine@sha256:7001ff8aabeabe8844ef8e7613afaf723e832e19fba55bf1b9929739c7723ece
+FROM node:lts-alpine@sha256:201a9b31be9fb5148ca40c9e727d5e559c659ed9521b3175ba73847026257e32
 RUN apk add dumb-init
 ENV NODE_ENV production
 USER node

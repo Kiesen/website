@@ -1,10 +1,13 @@
+import Head from 'next/head';
+
 import { Providers } from '@app/providers';
-import Body from '@components/Body';
+
+import { Body } from '@components/Body';
+
 import { HTML_HEAD_KEYS } from '@config/constants';
 
 import '@styles/globals.css';
-import Head from 'next/head';
-import 'tailwindcss/tailwind.css';
+import '@styles/tailwind.css';
 
 export default function RootLayout({
   children,

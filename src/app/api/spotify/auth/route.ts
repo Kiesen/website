@@ -1,8 +1,9 @@
 import crypto from 'crypto';
+import { cookies } from 'next/headers';
 import queryString from 'query-string';
 
 import { SPOTIFY_AUTH_STATE_KEY } from '@config/constants';
-import { cookies } from 'next/headers';
+
 import logger from '@utils/logger';
 
 const { stdout } = logger('[api/spotify/auth]');

@@ -20,9 +20,9 @@
       "@components/*": ["src/components/*"],
       "@config/*": ["src/config/*"],
       "@hooks/*": ["src/hooks/*"],
-      "@static/*": ["src/static/*"],
-      "@styles/*": ["src/styles/*"],
       "@utils/*": ["src/utils/*"],
+      "@static/*": ["src/static/*"],
+      "@styles/*": ["src/styles/*", "tailwindcss/*"],
     },
     "incremental": true,
     "plugins": [

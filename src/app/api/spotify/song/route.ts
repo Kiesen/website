@@ -1,12 +1,14 @@
 import queryString from 'query-string';
 
-import { SPOTIFY_API_BASE_URL } from '@config/endpoints';
-import { sci } from '@utils/spotifyAPIClient';
 import {
   CurrentlyPlayingResponse,
   RecentlyPlayedResponse,
 } from '@api/spotify/song/types';
+
+import { SPOTIFY_API_BASE_URL } from '@config/endpoints';
+
 import logger from '@utils/logger';
+import { sci } from '@utils/spotifyAPIClient';
 
 const { stderr } = logger('[api/spotify/song]');
 

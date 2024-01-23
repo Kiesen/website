@@ -1,14 +1,16 @@
 import Head from 'next/head';
 
-import Card from '@components/Card';
-import Footer from '@components/Footer';
-import IconMap from '@components/IconMap';
-import NavBar from '@components/NavBar';
-import SpotifyWidget from '@components/SpotifyWidget';
-import staticMetaData from '@static/meta.json';
+import { Card } from '@components/Card';
+import { Footer } from '@components/Footer';
+import { IconMap } from '@components/IconMap';
+import { NavBar } from '@components/NavBar';
+import { SpotifyWidget } from '@components/SpotifyWidget';
+
 import { HTML_HEAD_KEYS } from '@config/constants';
 
-export default function Home() {
+import staticMetaData from '@static/meta.json';
+
+export default async function Home() {
   return (
     <>
       <Head key={HTML_HEAD_KEYS.HOME}>
@@ -27,7 +29,9 @@ export default function Home() {
               {staticMetaData.headline}
             </h1>
 
-            <div className="my-4">{/* <SpotifyWidget /> */}</div>
+            <div className="my-4">
+              <SpotifyWidget />
+            </div>
           </div>
 
           <div className="w-full md:w-3/5 xl:w-2/5 mx-auto flex flex-col justify-center">

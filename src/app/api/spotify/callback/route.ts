@@ -1,10 +1,11 @@
 import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 import { type NextRequest } from 'next/server';
 
 import { SPOTIFY_AUTH_STATE_KEY } from '@config/constants';
-import { sci } from '@utils/spotifyAPIClient';
-import { redirect } from 'next/navigation';
+
 import logger from '@utils/logger';
+import { sci } from '@utils/spotifyAPIClient';
 
 const { stdout, stderr } = logger('[api/spotify/callback]');
 

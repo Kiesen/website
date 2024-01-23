@@ -11,13 +11,13 @@ jobs:
     name: Install dependencies
     runs-on: [ubuntu-latest]
     steps:
-      - name: Set up environment
-        uses: actions/checkout@v2
+      - name: Setup environment
+        uses: actions/checkout@v4
 
-      - name: Set up node.js
-        uses: actions/setup-node@v2
+      - name: Setup node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version: '>=18.17.0'
           cache: 'npm'
           cache-dependency-path: '**/package-lock.json'
 
@@ -29,13 +29,13 @@ jobs:
     needs: install
     runs-on: [ubuntu-latest]
     steps:
-      - name: Set up environment
-        uses: actions/checkout@v2
+      - name: Setup environment
+        uses: actions/checkout@v4
 
-      - name: Set up node.js
-        uses: actions/setup-node@v2
+      - name: Setup node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version: '>=18.17.0'
           cache: 'npm'
           cache-dependency-path: '**/package-lock.json'
 
@@ -51,18 +51,18 @@ jobs:
     runs-on: [ubuntu-latest]
     if: github.ref == 'refs/heads/master'
     steps:
-      - name: Set up environment
-        uses: actions/checkout@v2
+      - name: Setup environment
+        uses: actions/checkout@v4
 
       - name: Build image
         run: docker build -t frederikaulich .
 
-      - name: Set up doctl
+      - name: Setup doctl
         uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DO_ACCESS_TOKEN }}
 
-      - name: Log into registry
+      - name: Login into registry
         run: doctl registry login --expiry-seconds 600
 
       - name: Tag image for registry

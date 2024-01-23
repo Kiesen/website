@@ -15,6 +15,7 @@ USER node
 RUN mkdir -p /home/node/app
 WORKDIR /home/node/app
 COPY --chown=node:node --from=build /home/node/app/.next /home/node/app/.next
+COPY --chown=node:node --from=build /home/node/app/public /home/node/app/public
 COPY --chown=node:node --from=build /home/node/app/package.json /home/node/app/package-lock.json /home/node/app/
 RUN BUILD="true" npm ci --only=production
 EXPOSE 3001

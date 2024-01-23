@@ -29,9 +29,7 @@ export default async function Home() {
               {staticMetaData.headline}
             </h1>
 
-            <div className="my-4">
-              <SpotifyWidget />
-            </div>
+            <div className="my-4">{/* <SpotifyWidget /> */}</div>
           </div>
 
           <div className="w-full md:w-3/5 xl:w-2/5 mx-auto flex flex-col justify-center">

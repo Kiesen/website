@@ -53,10 +53,10 @@ const spotifyAPIClient = () => {
       process.env.SPOTIFY_ACCESS_TOKEN = data.access_token;
       process.env.SPOTIFY_REFRESH_TOKEN = data.refresh_token;
 
-      // Refresh the access token every 30 minutes
+      // Refresh the access token every half of the expiration time
       intervalID = setInterval(
         refreshAccessToken,
-        1000 * (data.expires_in / 2)
+        data.expires_in / 2
       );
       return true;
     } catch (error) {

@@ -5,8 +5,8 @@ const SPOTIFY_WEB_API = {
 } as const;
 
 const SPOTIFY_AUTH_API = {
-  BASE_URL: 'https://accounts.spotify.com/api',
-  TOKEN: '/token',
+  BASE_URL: 'https://accounts.spotify.com',
+  TOKEN: '/api/token',
   AUTHORIZE: '/authorize',
 } as const;
 

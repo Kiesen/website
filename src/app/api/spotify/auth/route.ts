@@ -2,19 +2,19 @@ import crypto from 'crypto';
 import { cookies } from 'next/headers';
 import queryString from 'query-string';
 
-import { SPOTIFY_AUTH_STATE_KEY } from '@config/constants';
+import { SPOTIFY_AUTH_CONFIG } from '@config/constants';
+import { SPOTIFY_API_ENDPOINTS } from '@config/endpoints';
 
 import logger from '@utils/logger';
 
 const { stdout } = logger('[api/spotify/auth]');
 
 export async function GET() {
-  const scope =
-    'user-read-currently-playing user-read-recently-played';
+  const scope = SPOTIFY_AUTH_CONFIG.SCOPES;
   const state = crypto.randomBytes(20).toString('hex');
 
   const cookieStore = cookies();
-  cookieStore.set(SPOTIFY_AUTH_STATE_KEY, state, {
+  cookieStore.set(SPOTIFY_AUTH_CONFIG.COOKIE_KEY, state, {
     httpOnly: true,
     secure: true,
     sameSite: 'strict',
@@ -26,7 +26,7 @@ export async function GET() {
     status: 307,
     headers: {
       Location:
-        'https://accounts.spotify.com/authorize?' +
+        `${SPOTIFY_API_ENDPOINTS.AUTHORIZE}?` +
         queryString.stringify({
           scope: scope,
           state: state,

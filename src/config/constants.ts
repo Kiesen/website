@@ -1,10 +1,43 @@
-export const SPOTIFY_AUTH_STATE_KEY = '_sas';
+export const SPOTIFY_AUTH_CONFIG = {
+  SCOPES: 'user-read-currently-playing user-read-recently-played',
+  COOKIE_KEY: '_sas',
+} as const;
 
-export const CACHE_KEYS = {
-  CURRENT_TRACK_QUERY: 'CURRENT_TRACK_QUERY',
-};
-
-export const HTML_HEAD_KEYS = {
+export const NEXT_CONFIG = {
   LAYOUT: 'LAYOUT',
   HOME: 'HOME',
-};
+} as const;
+
+export const HTTP_METHODS = {
+  GET: 'GET',
+  POST: 'POST',
+  PUT: 'PUT',
+  DELETE: 'DELETE',
+  PATCH: 'PATCH',
+  OPTIONS: 'OPTIONS',
+  HEAD: 'HEAD',
+} as const;
+
+export const HTTP_STATUS_CODES = {
+  OK: 200,
+  CREATED: 201,
+  ACCEPTED: 202,
+  NO_CONTENT: 204,
+  MOVED_PERMANENTLY: 301,
+  FOUND: 302,
+  SEE_OTHER: 303,
+  NOT_MODIFIED: 304,
+  TEMPORARY_REDIRECT: 307,
+  PERMANENT_REDIRECT: 308,
+  BAD_REQUEST: 400,
+  UNAUTHORIZED: 401,
+  FORBIDDEN: 403,
+  NOT_FOUND: 404,
+  METHOD_NOT_ALLOWED: 405,
+  CONFLICT: 409,
+  TOO_MANY_REQUESTS: 429,
+  INTERNAL_SERVER_ERROR: 500,
+  BAD_GATEWAY: 502,
+  SERVICE_UNAVAILABLE: 503,
+  GATEWAY_TIMEOUT: 504,
+} as const;

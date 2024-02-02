@@ -1,39 +1,44 @@
 import queryString from 'query-string';
 
 import {
-  CurrentlyPlayingResponse,
-  RecentlyPlayedResponse,
-} from '@api/spotify/song/types';
+  type SpotifyAPIErrorResponse,
+  type SpotifyAPIGetRecentlyPlayedTracksResponse,
+} from '@api/spotify/types';
 
-import { SPOTIFY_API_BASE_URL } from '@config/endpoints';
+import { SPOTIFY_API_ENDPOINTS } from '@config/endpoints';
 
 import logger from '@utils/logger';
-import { sci } from '@utils/spotifyAPIClient';
+import { spotifyAPIClient } from '@utils/spotifyAPIClient';
 
 const { stderr } = logger('[api/spotify/song]');
 
 export async function GET() {
   try {
-    const current = (await (
-      await sci.request(
-        `${SPOTIFY_API_BASE_URL}/me/player/currently-playing`
-      )
-    ).json()) as CurrentlyPlayingResponse | undefined;
-
-    const recently = (await (
-      await sci.request(
-        `${SPOTIFY_API_BASE_URL}/me/player/recently-played?${queryString.stringify(
+    const recently = await spotifyAPIClient
+      .request(
+        `${SPOTIFY_API_ENDPOINTS.RECENTLY_PLAYED}?${queryString.stringify(
           { limit: 1 }
         )}`
       )
-    ).json()) as RecentlyPlayedResponse | undefined;
+      .then<
+        | SpotifyAPIGetRecentlyPlayedTracksResponse
+        | SpotifyAPIErrorResponse
+      >((response) => response.json());
 
-    return Response.json({
-      current,
-      recently,
-    });
+    if ('error' in recently) {
+      stderr(
+        'Error while fetching song data. Reason: %s',
+        recently.error.message
+      );
+      return new Response(null, { status: 401 });
+    } else {
+      return Response.json({ recently });
+    }
   } catch (error) {
-    stderr('Error while fetching song data', error);
-    return new Response(null, { status: 401 });
+    stderr(
+      'Server error while fetching song data. Reason: %s',
+      error
+    );
+    return new Response(null, { status: 500 });
   }
 }

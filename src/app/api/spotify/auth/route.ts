@@ -2,7 +2,10 @@ import crypto from 'crypto';
 import { cookies } from 'next/headers';
 import queryString from 'query-string';
 
-import { SPOTIFY_AUTH_CONFIG } from '@config/constants';
+import {
+  HTTP_STATUS_CODES,
+  SPOTIFY_AUTH_CONFIG,
+} from '@config/constants';
 import { SPOTIFY_API_ENDPOINTS } from '@config/endpoints';
 
 import logger from '@utils/logger';
@@ -23,7 +26,7 @@ export async function GET() {
   stdout('Redirecting for authorization...');
 
   return new Response(null, {
-    status: 307,
+    status: HTTP_STATUS_CODES.TEMPORARY_REDIRECT,
     headers: {
       Location:
         `${SPOTIFY_API_ENDPOINTS.AUTHORIZE}?` +

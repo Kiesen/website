@@ -18,5 +18,5 @@ export const SPOTIFY_API_ENDPOINTS = {
 } as const;
 
 export const NEXT_API_ENDPOINTS = {
-  GET_SPOTIFY_SONG: '/api/spotify/song',
+  GET_SONG: '/api/song',
 } as const;

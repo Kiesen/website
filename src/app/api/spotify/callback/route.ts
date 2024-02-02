@@ -2,10 +2,13 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { type NextRequest } from 'next/server';
 
-import { SPOTIFY_AUTH_CONFIG } from '@config/constants';
+import {
+  HTTP_STATUS_CODES,
+  SPOTIFY_AUTH_CONFIG,
+} from '@config/constants';
 
 import logger from '@utils/logger';
-import { spotifyAPIClient } from '@utils/spotifyAPIClient';
+import { spotifyAPIClient } from '@utils/spotify';
 
 const { stdout, stderr } = logger('[api/spotify/callback]');
 
@@ -21,7 +24,7 @@ export async function GET(request: NextRequest) {
     stderr('Invalid client state or code');
 
     return new Response(null, {
-      status: 401,
+      status: HTTP_STATUS_CODES.UNAUTHORIZED,
     });
   } else {
     const isAuthorized = await spotifyAPIClient.authorizeClient(code);
@@ -33,7 +36,7 @@ export async function GET(request: NextRequest) {
     } else {
       stderr('Failed to authorize client');
       return new Response(null, {
-        status: 401,
+        status: HTTP_STATUS_CODES.UNAUTHORIZED,
       });
     }
   }

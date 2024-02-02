@@ -1,8 +1,7 @@
 import queryString from 'query-string';
+import logger from 'src/utils/logger';
 
 import { SPOTIFY_API_ENDPOINTS } from '@config/endpoints';
-
-import logger from '@utils/logger';
 
 type AuthCode = string | string[] | undefined;
 

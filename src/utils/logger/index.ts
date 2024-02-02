@@ -4,7 +4,7 @@ const log = console.log;
 const error = console.error;
 
 const logger = (ns: string) => ({
-  stdout: (message: string, optionalParams?: any) => {
+  stdout: (message: string, ...optionalParams: any[]) => {
     optionalParams
       ? log(chalk.bold(`[ok]:${ns}: ${message}`), optionalParams)
       : log(chalk.bold(`[ok]:${ns}: ${message}`));

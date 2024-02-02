@@ -4,7 +4,7 @@ import { Providers } from '@app/providers';
 
 import { Body } from '@components/Body';
 
-import { HTML_HEAD_KEYS } from '@config/constants';
+import { NEXT_CONFIG } from '@config/constants';
 
 import 'tailwindcss/tailwind.css';
 
@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Head key={HTML_HEAD_KEYS.LAYOUT}>
+      <Head key={NEXT_CONFIG.LAYOUT}>
         <link rel="shortcut icon" href="favicons/favicon.ico" />
       </Head>
       <Body>

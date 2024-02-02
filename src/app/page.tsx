@@ -4,16 +4,16 @@ import { Card } from '@components/Card';
 import { Footer } from '@components/Footer';
 import { IconMap } from '@components/IconMap';
 import { NavBar } from '@components/NavBar';
-import { SpotifyWidget } from '@components/SpotifyWidget';
+import { SongWidget } from '@components/SongWidget';
 
-import { HTML_HEAD_KEYS } from '@config/constants';
+import { NEXT_CONFIG } from '@config/constants';
 
 import staticMetaData from '@static/meta.json';
 
 export default async function Home() {
   return (
     <>
-      <Head key={HTML_HEAD_KEYS.HOME}>
+      <Head key={NEXT_CONFIG.HOME}>
         <title>Home | frederikaulich</title>
       </Head>
 
@@ -29,7 +29,9 @@ export default async function Home() {
               {staticMetaData.headline}
             </h1>
 
-            <div className="my-4">{/* <SpotifyWidget /> */}</div>
+            <div className="my-4">
+              <SongWidget />
+            </div>
           </div>
 
           <div className="w-full md:w-3/5 xl:w-2/5 mx-auto flex flex-col justify-center">

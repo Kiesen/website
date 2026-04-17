@@ -1,10 +1,11 @@
 {
-  "name": "frederikaulich",
+  "name": "website",
   "type": "module",
   "private": false,
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
+    "dev:tls": "nuxt dev --https --https.cert=./app/certs/localhost.crt --https.key=./app/certs/localhost.key --port 3030",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
@@ -16,6 +17,7 @@
   "dependencies": {
     "@nuxt/fonts": "^0.14.0",
     "@nuxt/icon": "^2.2.1",
+    "@nuxtjs/tailwindcss": "6.14.0",
     "@vueuse/nuxt": "^14.2.1",
     "nuxt": "^4.4.2",
     "vue": "^3.5.32",
@@ -24,12 +26,10 @@
   "devDependencies": {
     "@nuxt/eslint": "^1.15.2",
     "@nuxt/kit": "^4.4.2",
-    "@tailwindcss/vite": "^4.2.2",
     "@types/node": "^25.6.0",
     "eslint": "^10.2.1",
     "prettier": "^3.8.3",
     "pretty-quick": "^4.2.2",
-    "tailwindcss": "^4.2.2",
     "typescript": "^6.0.3"
   }
 }

@@ -84,13 +84,35 @@ export const resume: Resume = {
       description:
         'The site you are looking at — Nuxt 4, Vue 3, Tailwind v4. Minimal, dark-first, deployed on a home-baked Docker setup.',
       href: 'https://github.com/Kiesen/website',
-      tags: ['Nuxt', 'Vue', 'TypeScript'],
+      tags: ['Nuxt', 'AI', 'TypeScript'],
     },
     {
-      name: 'trivago',
+      name: 'trivago Platform',
       description:
-        'Replace with a real side project: what it does, why it exists, and one interesting technical detail.',
-      tags: ['SEO', 'NextJS', 'Data'],
+        "Drove SEO and performance optimizations on trivago's global platform, contributing to measurable improvements in Core Web Vitals and search rankings.",
+      href: 'https://www.trivago.de',
+      tags: ['SEO', 'Next.js', 'Performance'],
+    },
+    {
+      name: 'trivago Tooling',
+      description:
+        'Developed internal backend tooling and a custom monitoring dashboard aggregating data from multiple sources for real-time operational insights.',
+      href: 'https://www.trivago.de',
+      tags: ['Big Data', 'Data Engineering', 'API Design'],
+    },
+    {
+      name: 'Aedifion',
+      description:
+        'Designed and delivered the first version of their internal admin interface, enabling businesses to monitor and control building systems — energy distribution, heating, ventilation, and more.',
+      href: 'https://www.aedifion.com',
+      tags: ['RxJS', 'Admin Interface', 'IoT'],
+    },
+    {
+      name: 'Möbelfirst',
+      description:
+        'Built the initial webshop from scratch using Shopware and connected the backend API to a custom React frontend.',
+      href: 'https://www.moebelfirst.de',
+      tags: ['Shopware', 'React', 'E-Commerce'],
     },
   ],
   skills: [

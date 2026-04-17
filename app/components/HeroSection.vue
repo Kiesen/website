@@ -62,7 +62,7 @@ const onPointerLeave = () => {
   border-radius: 50%;
   background: currentColor;
   margin-left: 0.04em;
-  margin-bottom: 0.18em;
+  margin-bottom: 0.15em;
 }
 
 :root:not(.dark) .hero-content::before {

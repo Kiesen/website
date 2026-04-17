@@ -20,7 +20,6 @@ useSeoMeta({
         <hr class="border-[var(--color-border)]" />
       </div>
       <AboutSection />
-      <ExperienceSection />
       <SkillsSection />
       <ProjectsSection />
       <NowPlayingCard />

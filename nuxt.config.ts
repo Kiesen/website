@@ -10,8 +10,16 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: 'en' },
-      link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
+      link: [
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        { rel: 'apple-touch-icon', href: '/favicon.svg' },
+      ],
     },
+  },
+
+  routeRules: {
+    '/apple-touch-icon.png': { redirect: '/favicon.svg' },
+    '/apple-touch-icon-precomposed.png': { redirect: '/favicon.svg' },
   },
 
   experimental: {

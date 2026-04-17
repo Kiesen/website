@@ -17,6 +17,21 @@ const onCardMove = (name: string, e: MouseEvent) => {
 const onCardLeave = (name: string) => {
   cardStates[name]!.hover = false
 }
+
+const getFaviconUrl = (project: { href?: string; favicon?: string }) => {
+  if (project.favicon) return project.favicon
+  if (!project.href) return null
+  try {
+    const { hostname } = new URL(project.href)
+    return `https://www.google.com/s2/favicons?domain=${hostname}&sz=32`
+  } catch {
+    return null
+  }
+}
+
+const onFaviconError = (e: Event) => {
+  ;(e.target as HTMLImageElement).style.display = 'none'
+}
 </script>
 
 <template>
@@ -39,7 +54,17 @@ const onCardLeave = (name: string) => {
         >
           <div class="project-spotlight" :class="{ 'project-spotlight--active': cardStates[project.name]?.hover }" />
           <div class="flex items-start justify-between gap-3">
-            <h3 class="font-semibold text-[var(--color-fg)]">
+            <h3 class="flex min-w-0 items-center font-semibold text-[var(--color-fg)]">
+              <span class="favicon-wrapper" :class="{ 'favicon-wrapper--active': cardStates[project.name]?.hover }">
+                <img
+                  v-if="getFaviconUrl(project)"
+                  :src="getFaviconUrl(project) ?? ''"
+                  class="h-4 w-4 rounded-[3px] object-contain"
+                  alt=""
+                  aria-hidden="true"
+                  @error="onFaviconError"
+                />
+              </span>
               {{ project.name }}
             </h3>
             <Icon
@@ -67,6 +92,32 @@ const onCardLeave = (name: string) => {
 </template>
 
 <style scoped>
+.favicon-wrapper {
+  display: inline-flex;
+  overflow: hidden;
+  width: 0;
+  flex-shrink: 0;
+  transition: width 220ms ease;
+}
+
+.favicon-wrapper--active {
+  width: 22px; /* 16px icon + 6px gap */
+}
+
+.favicon-wrapper img {
+  flex-shrink: 0;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition:
+    opacity 180ms ease 60ms,
+    transform 180ms ease 60ms;
+}
+
+.favicon-wrapper--active img {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 .project-spotlight {
   position: absolute;
   inset: 0;
@@ -88,6 +139,11 @@ const onCardLeave = (name: string) => {
 @media (prefers-reduced-motion: reduce) {
   .project-spotlight {
     display: none;
+  }
+
+  .favicon-wrapper,
+  .favicon-wrapper img {
+    transition: none;
   }
 }
 </style>

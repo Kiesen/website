@@ -84,6 +84,7 @@ export const resume: Resume = {
       description:
         'The site you are looking at — Nuxt 4, Vue 3, Tailwind v4. Minimal, dark-first, deployed on a home-baked Docker setup.',
       href: 'https://github.com/Kiesen/website',
+      favicon: '/favicon.svg',
       tags: ['Nuxt', 'AI', 'TypeScript'],
     },
     {

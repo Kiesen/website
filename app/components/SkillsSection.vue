@@ -44,7 +44,16 @@ const onCardLeave = (label: string) => {
             :key="item.name"
             class="inline-flex items-center gap-1.5 rounded-md bg-[var(--color-bg)] px-2.5 py-1 text-sm text-[var(--color-fg)]"
           >
-            <Icon v-if="item.icon" :name="item.icon" class="h-3.5 w-3.5 shrink-0 text-[var(--color-fg-muted)]" />
+            <Icon
+              v-if="item.icon"
+              :name="item.icon"
+              class="h-3.5 w-3.5 shrink-0 transition-colors duration-300"
+              :style="
+                cardStates[group.label]?.hover && item.color
+                  ? { color: item.color }
+                  : { color: 'var(--color-fg-muted)' }
+              "
+            />
             {{ item.name }}
           </li>
         </ul>

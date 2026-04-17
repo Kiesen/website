@@ -23,6 +23,7 @@ export interface Project {
 export interface SkillItem {
   name: string
   icon?: string
+  color?: string
 }
 
 export interface SkillGroup {

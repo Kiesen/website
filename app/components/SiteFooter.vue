@@ -5,7 +5,7 @@ const year = new Date().getFullYear()
 
 <template>
   <footer
-    class="mt-10 border-t border-[var(--color-border)]/60 py-8 text-center font-mono text-xs text-[var(--color-fg-subtle)]"
+    class="mt-10 border-t border-[var(--color-border-muted)] py-8 text-center font-mono text-xs text-[var(--color-fg-subtle)]"
   >
     © {{ year }} · {{ resume.name }}
   </footer>

@@ -4,8 +4,8 @@ import { resume } from '~/data/resume'
 const links = [
   { label: 'About', href: '#about' },
   { label: 'Experience', href: '#experience' },
-  { label: 'Projects', href: '#projects' },
   { label: 'Toolkit', href: '#skills' },
+  { label: 'Projects', href: '#projects' },
   { label: 'Contact', href: '#contact' },
 ]
 
@@ -13,6 +13,7 @@ const activeSection = ref<string>('')
 const intersecting = new Set<string>()
 
 let observer: IntersectionObserver | null = null
+const sectionMap = new WeakMap<Element, string>()
 
 const pickActive = () => {
   const nearBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 80
@@ -28,20 +29,27 @@ onMounted(() => {
   observer = new IntersectionObserver(
     (entries) => {
       for (const entry of entries) {
+        const id = sectionMap.get(entry.target)
+        if (!id) continue
         if (entry.isIntersecting) {
-          intersecting.add(entry.target.id)
+          intersecting.add(id)
         } else {
-          intersecting.delete(entry.target.id)
+          intersecting.delete(id)
         }
       }
       pickActive()
     },
-    { rootMargin: '-15% 0px -55% 0px', threshold: 0 },
+    { rootMargin: '-10% 0px -60% 0px', threshold: 0 },
   )
 
   for (const link of links) {
-    const el = document.getElementById(link.href.slice(1))
-    if (el) observer.observe(el)
+    const id = link.href.slice(1)
+    const heading = document.getElementById(id)
+    const target = heading?.closest('section') ?? heading
+    if (target) {
+      sectionMap.set(target, id)
+      observer.observe(target)
+    }
   }
 
   window.addEventListener('scroll', pickActive, { passive: true })
@@ -55,7 +63,9 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <header class="sticky top-0 z-30 border-b border-[var(--color-border)]/60 bg-[var(--color-bg)]/70 backdrop-blur">
+  <header
+    class="sticky top-0 z-30 border-b border-[var(--color-border-muted)] bg-[var(--color-bg-glass)] backdrop-blur"
+  >
     <div class="mx-auto flex h-14 max-w-3xl items-center justify-between px-6">
       <a href="#top" class="font-mono text-sm tracking-tight text-[var(--color-fg)]">
         {{ resume.handle }}<span class="text-[var(--color-accent)]">.</span>

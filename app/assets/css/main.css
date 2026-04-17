@@ -40,10 +40,12 @@
   body {
     background: var(--color-bg);
     color: var(--color-fg);
-    font-family: var(--font-sans);
-    font-feature-settings:
-      'ss01' on,
-      'cv11' on;
+    font-family:
+      'Instrument Sans',
+      ui-sans-serif,
+      system-ui,
+      -apple-system,
+      sans-serif;
   }
 
   ::selection {

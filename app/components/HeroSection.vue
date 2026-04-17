@@ -45,10 +45,10 @@ const onPointerLeave = () => {
           Get in touch
         </a>
         <a
-          href="#experience"
+          href="#projects"
           class="inline-flex h-10 items-center rounded-full border border-[var(--color-border)] px-5 text-sm font-medium text-[var(--color-fg)] transition hover:border-[var(--color-fg-muted)]"
         >
-          View experience
+          View projects
         </a>
       </div>
     </div>

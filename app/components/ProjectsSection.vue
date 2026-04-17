@@ -48,7 +48,7 @@ const onCardLeave = (name: string) => {
               class="h-4 w-4 shrink-0 text-[var(--color-fg-subtle)] transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--color-accent)]"
             />
           </div>
-          <p class="mt-2 flex-1 text-pretty text-sm leading-relaxed text-[var(--color-fg-muted)]">
+          <p class="mt-2 flex-1 text-pretty text-base leading-relaxed text-[var(--color-fg-muted)]">
             {{ project.description }}
           </p>
           <ul v-if="project.tags" class="mt-4 flex flex-wrap gap-1.5" aria-label="Tags">

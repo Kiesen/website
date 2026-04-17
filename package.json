@@ -1,40 +1,35 @@
 {
   "name": "frederikaulich",
-  "version": "2.0.0",
+  "type": "module",
   "private": false,
-  "engines": {
-    "node": ">=18.17.0",
-    "npm": ">=10.2.3"
-  },
   "scripts": {
-    "dev": "next dev -p 8080",
-    "build": "next build",
-    "start": "next start -p 8080",
-    "lint": "next lint",
-    "pretty-quick": "pretty-quick --staged",
-    "postinstall": "if [ -z \"$BUILD\" ]; then husky install; fi"
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "bun lint:eslint && bun lint:prettier",
+    "lint:eslint": "eslint .",
+    "lint:prettier": "prettier . --check",
+    "lint:fix": "eslint . --fix && prettier --write --list-different ."
   },
   "dependencies": {
-    "chalk": "^5.3.0",
-    "next": "^14.1.0",
-    "query-string": "^8.1.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-icons": "^5.0.1",
-    "swr": "^2.2.4"
+    "@nuxt/fonts": "^0.14.0",
+    "@nuxt/icon": "^2.2.1",
+    "@vueuse/nuxt": "^14.2.1",
+    "nuxt": "^4.4.2",
+    "vue": "^3.5.32",
+    "vue-router": "^5.0.4"
   },
   "devDependencies": {
-    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
-    "@types/node": "^20.11.5",
-    "@types/react": "^18.0.14",
-    "autoprefixer": "^10.4.17",
-    "eslint": "^8.5.0",
-    "eslint-config-next": "^14.1.0",
-    "husky": "^8.0.1",
-    "postcss": "^8.4.5",
-    "prettier": "^3.2.4",
-    "pretty-quick": "^4.0.0",
-    "tailwindcss": "^3.0.8",
-    "typescript": "^5.3.3"
+    "@nuxt/eslint": "^1.15.2",
+    "@nuxt/kit": "^4.4.2",
+    "@tailwindcss/vite": "^4.2.2",
+    "@types/node": "^25.6.0",
+    "eslint": "^10.2.1",
+    "prettier": "^3.8.3",
+    "pretty-quick": "^4.2.2",
+    "tailwindcss": "^4.2.2",
+    "typescript": "^6.0.3"
   }
 }

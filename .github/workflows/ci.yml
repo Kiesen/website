@@ -6,67 +6,54 @@ on:
   pull_request:
     branches: [main]
 
+env:
+  IMAGE_NAME: frederikaulich
+  IMAGE_TAG: latest
+
 jobs:
-  install:
-    name: Install dependencies
-    runs-on: [ubuntu-latest]
+  ci:
+    name: Install, lint & build
+    runs-on: ubuntu-latest
     steps:
-      - name: Setup environment
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup node.js
-        uses: actions/setup-node@v4
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version: '>=18.17.0'
-          cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
+          bun-version: latest
 
-      - name: Installation of dependencies
-        run: npm install
-
-  test:
-    name: Lint and test
-    needs: install
-    runs-on: [ubuntu-latest]
-    steps:
-      - name: Setup environment
-        uses: actions/checkout@v4
-
-      - name: Setup node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '>=18.17.0'
-          cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
-
-      - name: Installation of dependencies
-        run: npm install
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
 
       - name: Lint
-        run: npm run lint
+        run: bun run lint
 
-  image:
-    name: Build and push image
-    needs: test
-    runs-on: [ubuntu-latest]
-    if: github.ref == 'refs/heads/main'
+      - name: Build
+        run: bun run build
+
+  deploy:
+    name: Docker build & push
+    needs: ci
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
-      - name: Setup environment
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Build image
-        run: docker build -t frederikaulich .
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
-      - name: Setup doctl
+      - name: Set up doctl
         uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DO_ACCESS_TOKEN }}
 
-      - name: Login into registry
+      - name: Log in to DigitalOcean registry
         run: doctl registry login --expiry-seconds 600
 
-      - name: Tag image for registry
-        run: docker tag frederikaulich registry.digitalocean.com/kiesen/frederikaulich:latest
-
-      - name: Push image to registry
-        run: docker push registry.digitalocean.com/kiesen/frederikaulich:latest
+      - name: Build & push image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ${{ secrets.DO_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

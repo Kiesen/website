@@ -8,8 +8,6 @@ export async function getSpotifyAccessToken(): Promise<string> {
   const config = useRuntimeConfig()
   const credentials = Buffer.from(`${config.spotifyClientId}:${config.spotifyClientSecret}`).toString('base64')
 
-  console.log('Refreshing Spotify access token...', config.spotifyRefreshToken) // Log when refreshing the token
-
   if (!config.spotifyRefreshToken) {
     throw createError({
       statusCode: 500,

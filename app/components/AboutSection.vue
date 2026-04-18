@@ -55,18 +55,59 @@ import { resume } from '~/data/resume'
   width: 2px;
   border-radius: 0 1px 1px 0;
   background: var(--color-accent);
-  transform: scaleY(0);
   transform-origin: bottom;
-  transition: transform 280ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform: scaleY(0);
 }
 
 .stat-card:hover .stat-bar {
-  transform: scaleY(1);
+  animation: vu-meter 2.4s ease-in-out infinite;
+}
+
+.stat-card:nth-child(2):hover .stat-bar {
+  animation-duration: 2.1s;
+  animation-delay: -0.9s;
+}
+
+@keyframes vu-meter {
+  0% {
+    transform: scaleY(0.22);
+  }
+  6% {
+    transform: scaleY(0.92);
+  }
+  18% {
+    transform: scaleY(0.38);
+  }
+  25% {
+    transform: scaleY(1);
+  }
+  38% {
+    transform: scaleY(0.42);
+  }
+  47% {
+    transform: scaleY(0.78);
+  }
+  59% {
+    transform: scaleY(0.26);
+  }
+  67% {
+    transform: scaleY(0.68);
+  }
+  79% {
+    transform: scaleY(0.38);
+  }
+  88% {
+    transform: scaleY(0.85);
+  }
+  100% {
+    transform: scaleY(0.22);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .stat-bar {
-    transition: none;
+    animation: none;
+    transform: scaleY(0.5);
   }
 }
 </style>

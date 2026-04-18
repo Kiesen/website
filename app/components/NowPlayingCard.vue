@@ -35,7 +35,13 @@ const relativeLiked = computed(() => {
         </div>
       </div>
 
-      <div v-else-if="track" class="flex items-center gap-5">
+      <a
+        v-else-if="track"
+        :href="track.url"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center gap-5 outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg-elevated)] rounded-xl"
+      >
         <img
           :src="track.albumArt"
           :alt="`Album art for ${track.album}`"
@@ -55,19 +61,14 @@ const relativeLiked = computed(() => {
           <h3 class="mt-1 truncate text-lg font-semibold text-[var(--color-fg)]">
             {{ track.title }}
           </h3>
-          <p class="truncate text-sm text-[var(--color-fg-muted)]"> {{ track.artist }} · {{ track.album }} </p>
+          <p class="truncate text-sm text-[var(--color-fg-muted)]">{{ track.artist }} · {{ track.album }}</p>
 
-          <a
-            :href="track.url"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="mt-3 inline-flex items-center gap-1.5 text-sm text-[var(--color-accent)] transition hover:underline"
-          >
+          <span class="mt-3 inline-flex items-center gap-1.5 text-sm text-[var(--color-accent)]">
             Listen on Spotify
             <Icon name="lucide:arrow-up-right" class="h-3.5 w-3.5" />
-          </a>
+          </span>
         </div>
-      </div>
+      </a>
     </div>
   </section>
 </template>

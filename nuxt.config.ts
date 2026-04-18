@@ -22,6 +22,18 @@ export default defineNuxtConfig({
     '/apple-touch-icon-precomposed.png': { redirect: '/favicon.svg' },
   },
 
+  devServer: {
+    host: '127.0.0.1',
+  },
+
+  runtimeConfig: {
+    spotifyClientId: '',
+    spotifyClientSecret: '',
+    spotifyRefreshToken: '',
+    spotifyRedirectUri: '',
+    spotifyAuthSecret: '',
+  },
+
   experimental: {
     serverAppConfig: false,
   },

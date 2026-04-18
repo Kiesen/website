@@ -2,7 +2,7 @@ import type { Resume } from '~/types/resume'
 
 export const resume: Resume = {
   name: 'Frederik Aulich',
-  handle: 'freddy',
+  handle: 'kiesen SE',
   title: 'Fullstack Software Engineer',
   tagline: 'Crafting fast, privacy-first products — from APIs to AI-powered interfaces.',
   bio: "I'm Freddy — a fullstack software engineer building software products end-to-end. I care deeply about performance, clean architecture, and thoughtful UX. Lately I spend a lot of time integrating AI into real-world products — with a strong focus on privacy-first, GDPR-compliant setups using locally-running models that keep sensitive data off third-party servers.",

@@ -35,5 +35,6 @@
     "pretty-quick": "^4.2.2",
     "release-it": "^20.0.0",
     "typescript": "^6.0.3"
-  }
+  },
+  "version": "2.0.0"
 }

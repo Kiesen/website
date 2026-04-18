@@ -44,9 +44,6 @@ useHead({
     <SiteHeader />
     <main>
       <HeroSection />
-      <div class="mx-auto max-w-3xl px-6" aria-hidden="true">
-        <hr class="border-[var(--color-border)]" />
-      </div>
       <AboutSection />
       <SkillsSection />
       <ProjectsSection />

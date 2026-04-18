@@ -22,6 +22,10 @@ export class Particle {
   vx: number
   vy: number
   radius: number
+  /** Resting depth in [0.35, 0.9]; 0 = far, 1 = close. */
+  baseZ: number
+  /** Current depth, eased toward baseZ + cursor bulge. */
+  z: number
 
   constructor(bounds: Bounds, opts: ParticleOptions = {}) {
     const maxSpeed = opts.maxSpeed ?? 0.25
@@ -30,9 +34,12 @@ export class Particle {
     this.vx = (Math.random() - 0.5) * 2 * maxSpeed
     this.vy = (Math.random() - 0.5) * 2 * maxSpeed
     this.radius = opts.radius ?? 1.6
+    this.baseZ = 0.35 + Math.random() * 0.55
+    this.z = this.baseZ
   }
 
   update(bounds: Bounds, cursor: Cursor, cursorRadius: number) {
+    let zTarget = this.baseZ
     if (cursor.active) {
       const dx = this.x - cursor.x
       const dy = this.y - cursor.y
@@ -40,11 +47,14 @@ export class Particle {
       const radiusSq = cursorRadius * cursorRadius
       if (distSq > 0 && distSq < radiusSq) {
         const dist = Math.sqrt(distSq)
-        const force = (1 - dist / cursorRadius) * 0.35
+        const t = 1 - dist / cursorRadius
+        zTarget = Math.min(1, this.baseZ + t * 0.55)
+        const force = t * 0.35
         this.vx += (dx / dist) * force
         this.vy += (dy / dist) * force
       }
     }
+    this.z += (zTarget - this.z) * 0.12
 
     const speed = Math.hypot(this.vx, this.vy)
     if (speed > MAX_VELOCITY) {
@@ -52,8 +62,10 @@ export class Particle {
       this.vy = (this.vy / speed) * MAX_VELOCITY
     }
 
-    this.x += this.vx
-    this.y += this.vy
+    // Motion parallax: near particles drift faster than far ones.
+    const parallax = 0.35 + this.z * 1.1
+    this.x += this.vx * parallax
+    this.y += this.vy * parallax
 
     if (this.x < 0) this.x += bounds.width
     else if (this.x > bounds.width) this.x -= bounds.width
@@ -62,8 +74,9 @@ export class Particle {
   }
 
   draw(ctx: CanvasRenderingContext2D) {
+    const scale = 0.2 + this.z * 1.6
     ctx.beginPath()
-    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
+    ctx.arc(this.x, this.y, this.radius * scale, 0, Math.PI * 2)
     ctx.fill()
   }
 }

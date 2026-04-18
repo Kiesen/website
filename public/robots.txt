@@ -1,2 +1,3 @@
 User-Agent: *
 Disallow:
+Sitemap: https://frederikaulich.com/sitemap.xml

@@ -25,6 +25,12 @@ const onPointerLeave = () => {
   >
     <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-20 bg-grain opacity-[0.06]" />
 
+    <div aria-hidden="true" class="hero-atmosphere pointer-events-none absolute inset-0 -z-[15]">
+      <span class="atmosphere-blob atmosphere-blob-a" />
+      <span class="atmosphere-blob atmosphere-blob-b" />
+      <span class="atmosphere-blob atmosphere-blob-c" />
+    </div>
+
     <HeroCanvas ref="canvasRef" />
 
     <div class="hero-content relative mx-auto max-w-3xl px-6">
@@ -72,5 +78,80 @@ const onPointerLeave = () => {
   z-index: -1;
   pointer-events: none;
   background: radial-gradient(ellipse at center, var(--color-bg) 25%, transparent 70%);
+}
+
+.atmosphere-blob {
+  position: absolute;
+  display: block;
+  border-radius: 9999px;
+  filter: blur(90px);
+  will-change: transform;
+}
+
+.atmosphere-blob-a {
+  width: 42rem;
+  height: 42rem;
+  top: -10rem;
+  left: -8rem;
+  background: radial-gradient(circle, rgba(30, 120, 65, 0.55), transparent 65%);
+  animation: atmosphere-drift-a 26s ease-in-out infinite;
+}
+
+.atmosphere-blob-b {
+  width: 34rem;
+  height: 34rem;
+  top: 4rem;
+  right: -10rem;
+  background: radial-gradient(circle, rgba(22, 85, 55, 0.6), transparent 70%);
+  animation: atmosphere-drift-b 32s ease-in-out infinite;
+}
+
+.atmosphere-blob-c {
+  width: 38rem;
+  height: 38rem;
+  bottom: -12rem;
+  left: 35%;
+  background: radial-gradient(circle, rgba(18, 70, 45, 0.55), transparent 70%);
+  animation: atmosphere-drift-c 38s ease-in-out infinite;
+}
+
+:root:not(.dark) .atmosphere-blob {
+  opacity: 0.35;
+}
+
+@keyframes atmosphere-drift-a {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(3rem, 2rem) scale(1.12);
+  }
+}
+
+@keyframes atmosphere-drift-b {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-2.5rem, 3rem) scale(0.9);
+  }
+}
+
+@keyframes atmosphere-drift-c {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(2rem, -3rem) scale(1.1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .atmosphere-blob {
+    animation: none;
+  }
 }
 </style>

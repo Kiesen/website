@@ -146,6 +146,9 @@ export class ParticleNetwork {
 
     ctx.clearRect(0, 0, this.bounds.width, this.bounds.height)
 
+    // Painter's algorithm: far particles first so near ones sit on top.
+    this.particles.sort((a, b) => a.z - b.z)
+
     this.renderConnections(ctx)
     this.renderParticles(ctx)
   }
@@ -156,7 +159,6 @@ export class ParticleNetwork {
     const cursorRadius = this.opts.cursorRadius
 
     ctx.strokeStyle = this.color
-    ctx.lineWidth = 1
 
     for (let i = 0; i < this.particles.length; i++) {
       const a = this.particles[i]!
@@ -168,7 +170,10 @@ export class ParticleNetwork {
         if (distSq >= linkDistSq) continue
 
         const dist = Math.sqrt(distSq)
-        let alpha = 1 - dist / linkDist
+        const avgZ = (a.z + b.z) * 0.5
+        // Fade links that span big depth gaps — keeps the mesh reading as layered.
+        const depthCoherence = 1 - Math.min(1, Math.abs(a.z - b.z) * 1.4)
+        let alpha = (1 - dist / linkDist) * (0.15 + avgZ * 0.85) * depthCoherence
 
         if (this.cursor.active) {
           const mx = (a.x + b.x) * 0.5
@@ -178,7 +183,8 @@ export class ParticleNetwork {
           alpha = Math.min(1, alpha + boost)
         }
 
-        ctx.globalAlpha = alpha * 0.5
+        ctx.globalAlpha = alpha * 0.6
+        ctx.lineWidth = 0.3 + avgZ * 1.2
         ctx.beginPath()
         ctx.moveTo(a.x, a.y)
         ctx.lineTo(b.x, b.y)
@@ -191,10 +197,14 @@ export class ParticleNetwork {
 
   private renderParticles(ctx: CanvasRenderingContext2D) {
     ctx.fillStyle = this.color
-    ctx.globalAlpha = 0.85
+    ctx.shadowColor = this.color
     for (const particle of this.particles) {
+      ctx.globalAlpha = 0.1 + particle.z * 0.9
+      // Bloom on near particles sells proximity; negligible on far ones.
+      ctx.shadowBlur = particle.z * particle.z * 10
       particle.draw(ctx)
     }
+    ctx.shadowBlur = 0
     ctx.globalAlpha = 1
   }
 }

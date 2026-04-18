@@ -1,5 +1,5 @@
 #!/bin/sh
 . "$(dirname $0)/_/husky.sh"
 
-npm run pretty-quick
-npm run lint
+bun run pretty-quick
+bun run lint

@@ -1,24 +1,13 @@
-module.exports = {
-  content: [
-    './src/components/**/*.{ts,tsx,js,jsx}',
-    './src/app/**/*.{ts,tsx,js,jsx}',
-  ],
+/** @type {import('tailwindcss').Config} */
+export default {
+  darkMode: 'class',
+  content: [],
   theme: {
     extend: {
-      animation: {
-        fadeIn: '1.2s ease fadeIn',
-        glitch: '5s ease 5s infinite alternate glitch',
-      },
-      backgroundImage: {
-        'body-image': "url('/images/background.png')",
+      fontFamily: {
+        sans: ['Instrument Sans', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+        mono: ['IBM Plex Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
       },
     },
   },
-  variants: {
-    extend: {
-      animation: ['group-hover'],
-      scale: ['group-hover'],
-    },
-  },
-  plugins: [],
-};
+}

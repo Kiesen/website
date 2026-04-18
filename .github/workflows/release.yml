@@ -1,0 +1,38 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+env:
+  IMAGE_NAME: frederikaulich
+
+jobs:
+  retag:
+    name: Retag & push versioned image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DO_ACCESS_TOKEN }}
+
+      - name: Log in to DigitalOcean registry
+        run: doctl registry login --expiry-seconds 600
+
+      - name: Extract version from tag
+        id: meta
+        run: echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+
+      - name: Pull latest image
+        run: docker pull ${{ secrets.DO_REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+
+      - name: Retag with release version
+        run: |
+          docker tag \
+            ${{ secrets.DO_REGISTRY }}/${{ env.IMAGE_NAME }}:latest \
+            ${{ secrets.DO_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.meta.outputs.version }}
+
+      - name: Push versioned image
+        run: docker push ${{ secrets.DO_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.meta.outputs.version }}

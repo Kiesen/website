@@ -1,8 +1,9 @@
 {
   "name": "website",
   "type": "module",
-  "private": false,
+  "private": true,
   "scripts": {
+    "release": "release-it",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "dev:tls": "nuxt dev --https --https.cert=./app/certs/localhost.crt --https.key=./app/certs/localhost.key --port 3030",
@@ -32,6 +33,7 @@
     "eslint": "^10.2.1",
     "prettier": "^3.8.3",
     "pretty-quick": "^4.2.2",
+    "release-it": "^20.0.0",
     "typescript": "^6.0.3"
   }
 }

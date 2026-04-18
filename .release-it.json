@@ -4,14 +4,15 @@
     "commitMessage": "Release v${version}",
     "tagName": "v${version}",
     "tagAnnotation": "Release v${version}",
-    "requireBranch": "main",
+    "requireBranch": "release",
     "push": true
   },
   "github": {
     "release": true,
     "releaseName": "v${version}"
   },
-  "npm": {
-    "publish": false
-  }
+  "hooks": {
+    "before:bump": "bun scripts/bump-version.js ${version}"
+  },
+  "npm": false
 }

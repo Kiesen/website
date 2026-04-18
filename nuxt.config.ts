@@ -10,6 +10,10 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: 'en' },
+      meta: [
+        { name: 'theme-color', media: '(prefers-color-scheme: light)', content: '#f8f7f5' },
+        { name: 'theme-color', media: '(prefers-color-scheme: dark)', content: '#1a1c25' },
+      ],
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
         { rel: 'apple-touch-icon', href: '/favicon.svg' },
@@ -18,6 +22,7 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
+    '/favicon.ico': { redirect: '/favicon.svg' },
     '/apple-touch-icon.png': { redirect: '/favicon.svg' },
     '/apple-touch-icon-precomposed.png': { redirect: '/favicon.svg' },
   },

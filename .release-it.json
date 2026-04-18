@@ -4,7 +4,7 @@
     "commitMessage": "Release v${version}",
     "tagName": "v${version}",
     "tagAnnotation": "Release v${version}",
-    "requireBranch": "main",
+    "requireBranch": "release",
     "push": true
   },
   "github": {

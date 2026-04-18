@@ -6,6 +6,8 @@ const cardStates = reactive<Record<string, CardState>>(
   Object.fromEntries(resume.skills.map((g) => [g.label, { x: 50, y: 50, hover: false }])),
 )
 
+const { registerCard } = useScrollActivatedCards(cardStates)
+
 const onCardMove = (label: string, e: MouseEvent) => {
   const el = e.currentTarget as HTMLElement
   const rect = el.getBoundingClientRect()
@@ -26,6 +28,7 @@ const onCardLeave = (label: string) => {
       <div
         v-for="group in resume.skills"
         :key="group.label"
+        :ref="(el: Element | ComponentPublicInstance | null) => registerCard(el, group.label)"
         class="skill-card relative overflow-hidden rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-5 transition-colors duration-200 hover:border-[var(--color-fg-subtle)]"
         :style="{
           '--mx': cardStates[group.label]?.x + '%',

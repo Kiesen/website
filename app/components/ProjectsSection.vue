@@ -6,6 +6,8 @@ const cardStates = reactive<Record<string, CardState>>(
   Object.fromEntries(resume.projects.map((p) => [p.name, { x: 50, y: 50, hover: false }])),
 )
 
+const { registerCard } = useScrollActivatedCards(cardStates)
+
 const onCardMove = (name: string, e: MouseEvent) => {
   const el = e.currentTarget as HTMLElement
   const rect = el.getBoundingClientRect()
@@ -41,6 +43,7 @@ const onFaviconError = (e: Event) => {
       <li v-for="project in resume.projects" :key="project.name">
         <component
           :is="project.href ? 'a' : 'div'"
+          :ref="(el: Element | ComponentPublicInstance | null) => registerCard(el, project.name)"
           :href="project.href"
           :target="project.href ? '_blank' : undefined"
           :rel="project.href ? 'noopener noreferrer' : undefined"

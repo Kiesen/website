@@ -11,7 +11,8 @@
     "release": true,
     "releaseName": "v${version}"
   },
-  "npm": {
-    "publish": false
-  }
+  "hooks": {
+    "before:bump": "bun scripts/bump-version.js ${version}"
+  },
+  "npm": false
 }
